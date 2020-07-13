@@ -27,7 +27,7 @@
               ><ion-icon slot="end" name="person-outline"></ion-icon>
               Username</ion-label
             >
-            <ion-input type="text" name="username" ngModel required></ion-input>
+            <ion-input type="text" name="email" ngModel required></ion-input>
           </ion-item>
           <ion-item>
             <ion-label position="floating"
@@ -41,7 +41,7 @@
             ></ion-input> </ion-item
           ><br />
 
-          <ion-button type="submit" color="success" style="padding-left: 35%;"
+          <ion-button type="submit" color="success" style="padding-left: 40%;" [disabled]="f.invalid"
             >Login</ion-button
           >
         </form>
