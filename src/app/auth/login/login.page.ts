@@ -9,19 +9,23 @@ import { Router } from '@angular/router';
   styleUrls: ["./login.page.scss"],
 })
 export class LoginPage implements OnInit {
-  constructor(private loading:LoadingController,private router:Router) {}
+  constructor(private loading: LoadingController, private router: Router) {}
 
   ngOnInit() {}
-  onsubmit(f:NgForm){
-   this.loading.create({keyboardClose:true,message:"Logging in..."}).then((re)=>{
-     re.present();
-     setTimeout(() => {
-       console.log(f.value.email);
-       re.dismiss();
-     }, 2000);
-    
-   })
-     
-      this.router.navigate(['/home'])
+  onsubmit(f: NgForm) {
+    this.loading
+      .create({ keyboardClose: true, message: "Logging in..." })
+      .then((re) => {
+        re.present();
+        setTimeout(() => {
+          console.log(f.value.email);
+          re.dismiss();
+        }, 2000);
+      });
+
+    this.router.navigate(["/home"]);
+  }
+  forgot(){
+    this.router.navigate(["/forgotpassword"]);
   }
 }

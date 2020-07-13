@@ -40,13 +40,18 @@
               required
             ></ion-input> </ion-item
           ><br />
-
-          <ion-button type="submit" color="tertiary" style="padding-left: 40%;" [disabled]="f.invalid"
-            >Login</ion-button
+          <ion-row>
+            <ion-col size="12">
+              <ion-button color="primary"(click)="forgot()" 
+                >Forgot Password</ion-button
+              >
+              <ion-button type="submit" color="tertiary" [disabled]="f.invalid"
+                >Login</ion-button
+              ></ion-col
+            ></ion-row
           >
         </form>
       </ion-col>
     </ion-row>
-  
   </ion-grid>
 </ion-content>
