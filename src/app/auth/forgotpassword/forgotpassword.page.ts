@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
@@ -7,11 +8,10 @@ import { NgForm } from '@angular/forms';
   styleUrls: ["./forgotpassword.page.scss"],
 })
 export class ForgotpasswordPage implements OnInit {
-  constructor() {}
+  constructor(private Router:Router) {}
 
   ngOnInit() {}
   onsubmit(f:NgForm){
-    console.log(f.value.email);
-    
+  this.Router.navigate(["forgotpassword/otp"]);
   }
 }

@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: ForgotpasswordPage
+  },
+  {
+    path: 'otp',
+    loadChildren: () => import('./otp/otp.module').then( m => m.OtpPageModule)
   }
 ];
 
