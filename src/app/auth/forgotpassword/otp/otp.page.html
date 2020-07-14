@@ -1,9 +1,30 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="forgotpassword"> </ion-back-button>
+    </ion-buttons>
     <ion-title>otp</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form (ngSubmit)="onsubmit(f)" #f="ngForm">
+          <ion-item>
+            <ion-label position="floating">Enter the Opt </ion-label>
+            <ion-input type="number" name="otp" ngModel required></ion-input> </ion-item
+          ><br />
+          <ion-row>
+            <ion-col offset="4.5">
+              <ion-button type="submit" [disabled]="f.invalid">
+                Submit OTP</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
