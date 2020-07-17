@@ -15,41 +15,37 @@ export class LoginPage implements OnInit {
     private router: Router,
     private http: HttpClient
   ) {}
-
-  post = 
-    {
-      email: "ayushmishra0810@gmail.com",
-      password: "12356890",
-      club_name: "Moon Child",
-      address: "abcd 12",
-      cover_charge: 1000,
-    };
-  
+  //User id and password
+  //12356890
+  //khushbooothakur235@gmail.com
+  post = {};
 
   ngOnInit() {}
   onsubmit(f: NgForm) {
+    this.post={email:f.value.email,password:f.value.password}
     this.loading
       .create({ keyboardClose: true, message: "Logging in..." })
       .then((re) => {
         re.present();
-        setTimeout(() => {
-          console.log(f.value.email);
-          re.dismiss();
-        }, 2000);
-      });
-
-    this.router.navigate(["/home"]);
-    this.http
-      .post(
-        "https://bp1kdw1c7i.execute-api.ap-south-1.amazonaws.com/dev_1/registeruser"
-          ,
-        `${this.post}`
-      )
-      .subscribe((re) => {
-        console.log(re);
+        this.http
+          .post<{ status: boolean; message: string; data: any }>(
+            "https://bp1kdw1c7i.execute-api.ap-south-1.amazonaws.com/dev_1/login",
+            this.post
+          )
+          .subscribe((re) => {
+            console.log(re);
+            
+            if (re.status === true) {
+              this.router.navigate(["/home"]);
+            } else {
+              this.router.navigate(["/login"]);
+            }
+          });
+        re.dismiss();
       });
   }
   forgot() {
-    this.router.navigate(["/forgotpassword"]);
+    
+     this.router.navigate(["/forgotpassword"]);
   }
 }
