@@ -25,8 +25,8 @@ export class LoginPage implements OnInit {
     this.post={email:f.value.email,password:f.value.password}
     this.loading
       .create({ keyboardClose: true, message: "Logging in..." })
-      .then((re) => {
-        re.present();
+      .then((res) => {
+        res.present();
         this.http
           .post<{ status: boolean; message: string; data: any }>(
             "https://bp1kdw1c7i.execute-api.ap-south-1.amazonaws.com/dev_1/login",
@@ -37,11 +37,14 @@ export class LoginPage implements OnInit {
             
             if (re.status === true) {
               this.router.navigate(["/home"]);
+              res.dismiss();
+              
             } else {
               this.router.navigate(["/login"]);
+                 
             }
           });
-        re.dismiss();
+       
       });
   }
   forgot() {
