@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
     private http: HttpClient
   ) {}
   post = {};
-  thiscity :data[]= [];
+  thiscity: data[] = [];
 
   ngOnInit() {
     this.http
@@ -36,7 +36,7 @@ export class LoginPage implements OnInit {
       city: "Indore",
       club_name: "Child",
     };
-    console.log(this.post);
+    //console.log(this.post);
 
     this.loading
       .create({ keyboardClose: true, message: "Logging in..." })
@@ -49,38 +49,38 @@ export class LoginPage implements OnInit {
           )
           .subscribe((re) => {
             console.log(re.message);
-
-            if (re.status === true) {
-              this.router.navigate(["/home"]);
+            if (!re) {
               res.dismiss();
-            } else {
               this.router.navigate(["/login"]);
+            } else {
+              if (re.status === true) {
+                this.router.navigate(["/home"]);
+                res.dismiss();
+              }
             }
           });
+         
       });
   }
 
-  forgot() {
-   
-  }
+  forgot() {}
   //ayushmishra0810@gmail.com
   //12356890
 
   //<-**************Register User*******************->//
 
- //  let postR = {
-//      email: "ayushmishr1@gmail.com",
-//       password: "12356890",
- //      club_name: " Child",
- //      city: "Bhopal",
-//       address: "abcd 12",
- ///      cover_charge: 1000,
-////     };
+  //  let postR = {
+  //      email: "ayushmishr1@gmail.com",
+  //       password: "12356890",
+  //      club_name: " Child",
+  //      city: "Bhopal",
+  //       address: "abcd 12",
+  ///      cover_charge: 1000,
+  ////     };
   //  this.http.post(
- //     "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/registeruser",postR
- //   ).subscribe(re=>{
- //     console.log(re);
- //     
- //   });
-
+  //     "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/registeruser",postR
+  //   ).subscribe(re=>{
+  //     console.log(re);
+  //
+  //   });
 }
