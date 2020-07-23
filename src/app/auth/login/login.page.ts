@@ -63,7 +63,9 @@ export class LoginPage implements OnInit {
       });
   }
 
-  forgot() {}
+  forgot() {
+    this.router.navigate(["/forgotpassword"]);
+  }
   //ayushmishra0810@gmail.com
   //12356890
 

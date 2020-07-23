@@ -19,6 +19,14 @@ const routes: Routes = [
     path: 'forgotpassword',
     loadChildren: () => import('./auth/forgotpassword/forgotpassword.module').then( m => m.ForgotpasswordPageModule)
   },
+  {
+    path: 'select-city',
+    loadChildren: () => import('./selection/select-city/select-city.module').then( m => m.SelectCityPageModule)
+  },
+  {
+    path: 'select-club',
+    loadChildren: () => import('./selection/select-club/select-club.module').then( m => m.SelectClubPageModule)
+  },
 ];
 
 @NgModule({
