@@ -5,6 +5,16 @@
 </ion-header>
 
 <ion-content>
+ 
+  <pre *ngFor="let city of thiscity.citylist" > <ion-select>
+    <ion-select-option [value]="city">
+      {{city}}
+      </ion-select-option>
+  </ion-select></pre>
+
+
+   
+  
   <ion-grid style="padding: 20px;">
     <ion-row style="padding: 20px;">
       <ion-col size="8" offset="2" style="background-color: rgb(255, 166, 0);">
@@ -20,7 +30,7 @@
       </ion-col> </ion-row
     ><br />
     <ion-row>
-      <ion-col size="12">
+      <ion-col  size-sm="6" offset-sm="3">
         <form style="align-self: center;" (ngSubmit)="onsubmit(f)" #f="ngForm">
           <ion-item>
             <ion-label position="floating"
@@ -41,7 +51,7 @@
             ></ion-input> </ion-item
           >
           <ion-row>
-            <ion-col offset="6">
+            <ion-col size-sm="6" offset-sm="3">
               <ion-button fill="text"  style="color:rgb(255, 166, 0)" (click)="forgot()" 
                 >
                 Forgot Password?</ion-button
@@ -56,4 +66,5 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+ 
 </ion-content>

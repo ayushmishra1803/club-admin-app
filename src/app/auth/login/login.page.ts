@@ -1,3 +1,4 @@
+import { data } from "./data";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { LoadingController } from "@ionic/angular";
@@ -15,40 +16,59 @@ export class LoginPage implements OnInit {
     private router: Router,
     private http: HttpClient
   ) {}
-  //User id and password
-  //12356890
-  //khushbooothakur235@gmail.com
   post = {};
+  thiscity :data[]= [];
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.http
+      .get<{ data: any }>(
+        "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/citylist"
+      )
+      .subscribe((re) => {
+        this.thiscity = re.data;
+        console.log(this.thiscity);
+      });
+  }
   onsubmit(f: NgForm) {
-    this.post={email:f.value.email,password:f.value.password}
+    this.post = {
+      email: f.value.email,
+      password: f.value.password,
+      city: "Indore",
+      club_name: "Child",
+    };
+    console.log(this.post);
+
     this.loading
       .create({ keyboardClose: true, message: "Logging in..." })
       .then((res) => {
         res.present();
         this.http
           .post<{ status: boolean; message: string; data: any }>(
-            "https://bp1kdw1c7i.execute-api.ap-south-1.amazonaws.com/dev_1/login",
+            "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/login",
             this.post
           )
           .subscribe((re) => {
-            console.log(re);
-            
+            console.log(re.message);
+
             if (re.status === true) {
               this.router.navigate(["/home"]);
               res.dismiss();
-              
             } else {
               this.router.navigate(["/login"]);
-                 
             }
           });
-       
       });
   }
-  forgot() {
-    
-     this.router.navigate(["/forgotpassword"]);
-  }
+
+  forgot() {}
+  //ayushmishra0810@gmail.com
+  //12356890
+  //  post = {
+  //  email: "ayushmishra0810@gmail.com",
+  // password: "12356890",
+  // club_name: " Child",
+  // city: "Indore",
+  // address: "abcd 12",
+  //cover_charge: 1000,
+  //};
 }
