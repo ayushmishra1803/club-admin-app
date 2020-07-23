@@ -14,11 +14,11 @@ export class AuthService {
   selectedCity(data:string){
     if(!data)
     {
-      return
+      return;
     }
     else{
      
-      this.city=data
+      this.city=data;
     }
   }
   getcity(){
