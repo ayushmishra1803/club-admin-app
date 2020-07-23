@@ -1,3 +1,4 @@
+import { AuthService } from './../../service/auth/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectClubPage implements OnInit {
 
-  constructor() { }
+  constructor(private auth:AuthService) { }
+  city:string
 
   ngOnInit() {
+    this.city=this.auth.getcity();
+    console.log(this.city);
+    
   }
 
 }

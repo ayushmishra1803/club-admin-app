@@ -1,9 +1,50 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>select-city</ion-title>
+    <ion-title><h1> Select City</h1></ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+           <ion-row style="padding: 20px;">
+      <ion-col size="8" offset="2" style="background-color: rgb(255, 166, 0);">
+        <ion-img src="assets/images/logo/logo.png" style="height: 200px;"> </ion-img>
+      </ion-col>
+    </ion-row>
+          <h1 style="text-align: center;">Club Handle</h1>
+          <h6 style="text-align: center;">By NovisTec</h6>
+          <br /><br />
+          <h3 style="text-align: center;">
+            Choose the CITY the<br />
+            club is located in
+          </h3>
+          <br />
+        </ion-list>
+        <ion-list>
+          <form (ngSubmit)="onsubmit(f)" #f="ngForm">
+            <ion-item>
+              <ion-label>Choose the city</ion-label>
+              <ion-select name="select" ngModel required>                
+             
+                <ion-select-option *ngFor="let city of city.citylist">
+                  {{city}}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-row>
+              <ion-col offset="4.5">
+                <br><br>
+                <ion-button type="submit" [disabled]="f.invalid">Submit</ion-button>
+              </ion-col>
+            </ion-row>
+          </form>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
