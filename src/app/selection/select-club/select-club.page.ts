@@ -15,23 +15,27 @@ export class SelectClubPage implements OnInit {
     private router: Router,
     private http: HttpClient
   ) {}
-  clubs:clubList[]=[]
+  clubs: clubList[] = [];
   city = {};
-  choose:string;
+  choose: string;
 
   ngOnInit() {
     let selectedcity = this.auth.getcity().trim();
-   
-    
-    this.city = { city:`${selectedcity.trim()}`};
+
+    this.city = { city: `${selectedcity.trim()}` };
     console.log(this.city);
     this.http
-      .post<{data:clubList[]}>(
-        "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/clublist",this.city
+      .post<{ data: clubList[] }>(
+        "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/clublist",
+        this.city
       )
       .subscribe((re) => {
-        this.clubs=re.data
+        this.clubs = re.data;
         console.log(this.clubs);
       });
+  }
+  
+  onclick(club: string) {
+    console.log(club);
   }
 }

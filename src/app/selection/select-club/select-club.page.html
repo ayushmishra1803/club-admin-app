@@ -9,9 +9,10 @@
 
 <ion-content>
   <ion-searchbar (ionInput)="getClubs($event)"></ion-searchbar>
-<ion-list *ngFor="let c of clubs.clublist" (click)="onclick">
+<ion-list *ngFor="let c of clubs.clublist" (click)="onclick(c)">
   <ion-item detail >
 <ion-label>{{c}}</ion-label>
+
     </ion-item>
   </ion-list>
  
