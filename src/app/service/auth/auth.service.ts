@@ -11,6 +11,7 @@ export class AuthService {
   constructor(private http:HttpClient) { }
   login:login[]=[];
   city:string
+  club:string;
   selectedCity(data:string){
     if(!data)
     {
@@ -23,6 +24,13 @@ export class AuthService {
   }
   getcity(){
     return this.city;
+  }
+
+  setclub(club:string){
+    this.club=club;
+  }
+  getclub(){
+    return this.club;
   }
 
 }

@@ -37,5 +37,7 @@ export class SelectClubPage implements OnInit {
   
   onclick(club: string) {
     console.log(club);
+    this.auth.setclub(club);
+    this.router.navigate(['/login'])
   }
 }
