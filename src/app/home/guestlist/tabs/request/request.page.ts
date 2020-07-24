@@ -1,3 +1,4 @@
+import { GuestListService } from './../service/guest-list.service';
 import { request } from './interface/request-model';
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
@@ -8,16 +9,19 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./request.page.scss"],
 })
 export class RequestPage implements OnInit {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private service:GuestListService) {}
   requests: request[] = [];
+  day:string=""
   ngOnInit() {
-    let day = {
-      day: "Friday",
-    };
+     this.day = this.service.getday();
+     let data = {
+       day: this.day.trim(),
+     };
+   
     this.http
       .post<{ data: request[] }>(
         "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/guestlist/request",
-        day
+        data
       )
       .subscribe((re) => {
         this.requests = re.data;

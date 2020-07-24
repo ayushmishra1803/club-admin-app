@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-  <ion-tabs>
+  <!-- <ion-tabs>
     <ion-tab-bar slot="primary">
       <ion-tab-button tab="request">
        <ion-label style="font-size: 15px;"> Requests </ion-label>
@@ -12,8 +12,17 @@
         <ion-icon name="people"></ion-icon>
       </ion-tab-button>
     </ion-tab-bar>
-  </ion-tabs>
+  </ion-tabs> -->
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content> 
+ <div *ngFor="let day of mode">
+  
+  <ion-card style="background-color:rgb(255,160,0);"(click)="selectedday(day)">
+    <ion-card-title style="text-align: center; color: black;">
+      <h1>{{day}}</h1>
+      </ion-card-title>
+    </ion-card>
+  </div>
+</ion-content>
