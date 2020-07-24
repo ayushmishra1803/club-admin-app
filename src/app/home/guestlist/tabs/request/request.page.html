@@ -6,18 +6,16 @@
 
 <ion-content>
   <!-- {{requests.user_data |json}} -->
-<ion-list *ngFor="let req of requests.user_data let index of index">
-  <ion-item>
-    
+  <ion-list *ngFor="let req of requests.user_data let index of index">
+    <ion-item>
       <ion-thumbnail slot="start">
-        <ion-img [src]="req[0].profile_path" ></ion-img>
-        </ion-thumbnail>
-     <ion-label> {{req [0].email  }}</ion-label>
-     <ion-button slot="end" (click)="yes(req [0].uuid)">Yes</ion-button>
-     <ion-button slot="end" (click)="no(req [0].uuid)">Yes</ion-button>
-      
-  </ion-item>
-
-  
-</ion-list>
+        <ion-img [src]="req[0].profile_path"></ion-img>
+      </ion-thumbnail>
+      <ion-label> {{req [0].email }}</ion-label>
+      <ion-button slot="end" (click)="yes(req [0].uuid)"
+        ><ion-icon name="checkmark-done-outline"></ion-icon
+      ></ion-button>
+      <ion-button slot="end" (click)="no(req [0].uuid)">NO</ion-button>
+    </ion-item>
+  </ion-list>
 </ion-content>
