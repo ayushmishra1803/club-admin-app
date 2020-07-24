@@ -18,7 +18,7 @@ export class ForgotpasswordPage implements OnInit {
     console.log(this.email);
     
     this.http.post(
-      "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/forgotpasswordotp",this.email
+      "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/forgetpasswordotp",this.email
     ).subscribe(re=>{
       console.log(re);
       

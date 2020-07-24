@@ -1,9 +1,10 @@
-import { clubList } from './club/club.-interface';
+import { data } from './../../auth/login/data';
+import { clubList } from "./club/club.-interface";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { AuthService } from "./../../service/auth/auth.service";
 import { Component, OnInit } from "@angular/core";
-
+import { map } from "rxjs/operators";
 @Component({
   selector: "app-select-club",
   templateUrl: "./select-club.page.html",
@@ -18,7 +19,6 @@ export class SelectClubPage implements OnInit {
   clubs: clubList[] = [];
   city = {};
 
-
   ngOnInit() {
     let selectedcity = this.auth.getcity().trim();
 
@@ -31,13 +31,27 @@ export class SelectClubPage implements OnInit {
       )
       .subscribe((re) => {
         this.clubs = re.data;
+        
         console.log(this.clubs);
       });
   }
-  
+  // serachclub: any = [];
+  // initializeClubs() {
+  //   this.clubs;
+  // }
+
   onclick(club: string) {
     console.log(club);
     this.auth.setclub(club);
-    this.router.navigate(['/login'])
+    this.router.navigate(["/login"]);
   }
+  // getClubs(ev) {
+  //   //this.initializeClubs();
+  //   var val = ev.target.value;
+  //   if (val && val.trim() != "") {
+  //     this.clubs = this.clubs.filter((Club) => {
+  //       return Club.toLowerCase().indexOf(val.toLowerCase()) > -1;
+  //     });
+  //   }
+  // }
 }
