@@ -1,3 +1,4 @@
+import { request } from './interface/request-model';
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 
@@ -8,19 +9,19 @@ import { Component, OnInit } from "@angular/core";
 })
 export class RequestPage implements OnInit {
   constructor(private http: HttpClient) {}
-
+  requests:request[]=[];
   ngOnInit() {
     let day = {
       day: "Friday",
     };
     this.http
-      .post<{ data: any[] }>(
+      .post<{ data: request[] }>(
         "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/guestlist/request",
         day
       )
       .subscribe((re) => {
-        //this.request = re.data.user_data;
-        console.log(re);
+        this.requests = re.data.user_data;
+        console.log(this.requests);
       });
   }
 }
