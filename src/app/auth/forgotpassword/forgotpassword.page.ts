@@ -18,10 +18,14 @@ export class ForgotpasswordPage implements OnInit {
     this.email = { email: f.value.email.trim() };
     console.log(this.email);
     
-    this.http.post<{data:number}>(
+    this.http.post<{status:boolean,data:number}>(
       "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/forgetpasswordotp",this.email
     ).subscribe(re=>{
       this.otp=re.data;
+      if(re.status===true)
+      {
+        this.Router.navigate(["/forgotpassword/otp"]);
+      }
       console.log(this.otp);
       
       
