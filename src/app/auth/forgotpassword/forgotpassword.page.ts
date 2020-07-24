@@ -13,16 +13,19 @@ export class ForgotpasswordPage implements OnInit {
 
   ngOnInit() {}
   email={};
+  otp:number;
   onsubmit(f:NgForm){
     this.email = { email: f.value.email.trim() };
     console.log(this.email);
     
-    this.http.post(
+    this.http.post<{data:number}>(
       "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/forgetpasswordotp",this.email
     ).subscribe(re=>{
-      console.log(re);
+      this.otp=re.data;
+      console.log(this.otp);
+      
       
     });
-  //this.Router.navigate(["forgotpassword/otp"]);
+  
   }
 }
