@@ -1,3 +1,4 @@
+import { AuthService } from './../../service/auth/auth.service';
 import { data } from "./data";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
@@ -14,27 +15,28 @@ export class LoginPage implements OnInit {
   constructor(
     private loading: LoadingController,
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private auth:AuthService
   ) {}
   post = {};
-  thiscity: data[] = [];
+  
+  city:string;
+    club:string;
 
   ngOnInit() {
-    this.http
-      .get<{ data: data[] }>(
-        "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/citylist"
-      )
-      .subscribe((re) => {
-        this.thiscity = re.data;
-        console.log(this.thiscity);
-      });
+    this.city=this.auth.getcity();
+    this.club=this.auth.getclub();
+    console.log(this.city);
+    console.log(this.club);
+    
+    
   }
   onsubmit(f: NgForm) {
     this.post = {
       email: f.value.email,
       password: f.value.password,
-      city: "Indore",
-      club_name: "Child",
+      city: this.city.trim(),
+      club_name: this.club.trim(),
     };
     //console.log(this.post);
 
