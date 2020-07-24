@@ -1,5 +1,16 @@
-
+<ion-header>
+<ion-toolbar>
+    <ion-label>Ayush</ion-label>
+    </ion-toolbar>    
+</ion-header>
 
 <ion-content>
-
+  <ion-list *ngFor="let req of requests.user_data let index of index">
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-img [src]="req[0].profile_path"></ion-img>
+      </ion-thumbnail>
+      <ion-label> {{req [0].email }}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -9,7 +9,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class RequestPage implements OnInit {
   constructor(private http: HttpClient) {}
-  requests:request[]=[];
+  requests: request[] = [];
   ngOnInit() {
     let day = {
       day: "Friday",
@@ -20,8 +20,30 @@ export class RequestPage implements OnInit {
         day
       )
       .subscribe((re) => {
-        this.requests = re.data.user_data;
+        this.requests = re.data;
         console.log(this.requests);
       });
+  }
+  yes(email: string) {
+    console.log(email);
+    let data = { day: "Friday", user: email };
+    this.http
+      .put(
+        "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/guestlist/acceptrequest",
+        data
+      )
+      .subscribe((re) => {
+        console.log(re);
+      });
+  }
+  no(email: string) {
+    console.log(email);
+    let data = { day: "Friday", user: email };
+    this.http.put(
+      "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/guestlist/denyrequest",data
+    ).subscribe(re=>{
+      console.log(re);
+      
+    });
   }
 }
