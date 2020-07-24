@@ -1,9 +1,18 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>select-club</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button routerLink="/select-city"> </ion-back-button>
+    </ion-buttons>
+    <ion-title>Choose your club</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-searchbar (ionInput)="getClubs($event)"></ion-searchbar>
+<ion-list *ngFor="let c of clubs.clublist" (click)="onclick">
+  <ion-item detail >
+<ion-label>{{c}}</ion-label>
+    </ion-item>
+  </ion-list>
+ 
 </ion-content>

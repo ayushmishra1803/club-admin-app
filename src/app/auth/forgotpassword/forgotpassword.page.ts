@@ -21,6 +21,6 @@ export class ForgotpasswordPage implements OnInit {
       console.log(re);
       
     });
-  this.Router.navigate(["forgotpassword/otp"]);
+  //this.Router.navigate(["forgotpassword/otp"]);
   }
 }
