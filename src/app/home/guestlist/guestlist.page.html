@@ -5,5 +5,12 @@
 </ion-header>
 
 <ion-content>
-
+<div *ngFor="let day of days">
+  
+  <ion-card style="background-color:rgb(255,160,0);"(click)="selectedday(day)">
+    <ion-card-title style="text-align: center; color: black;">
+      <h1>{{day}}</h1>
+      </ion-card-title>
+    </ion-card>
+  </div>
 </ion-content>
