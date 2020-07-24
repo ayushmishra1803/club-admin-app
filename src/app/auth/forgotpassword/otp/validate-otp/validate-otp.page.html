@@ -1,14 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="forgotpassword"> </ion-back-button>
-    </ion-buttons>
-    <ion-title>otp</ion-title>
+    <ion-title>validate-otp</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+<ion-grid>
     <ion-row>
       <ion-col>
         <ion-list>
@@ -29,37 +26,48 @@
             Password Reset
           </h3>
           <p style="text-align: center;">
-            please enter the OTP sent to your mail<br />
+          set a new password for your account<br />
           </p>
 
           <br />
         </ion-list>
-        <form (submit)="onsubmit(f)" #f="ngForm">
+       <form (submit)="submit(f)" #f="ngForm">
           <ion-item>
-            <ion-label position="floating">
-              <ion-icon name="ellipse-outline"></ion-icon>
-              &nbsp;&nbsp;&nbsp;OTP</ion-label
+            <ion-label position="floating"
+              ><ion-icon name="key"></ion-icon> Enter New Password</ion-label
             ><br />
             <ion-input
-              type="number"
-              name="otp"
+              type="password"
+              name="newpassword"
               ngModel
               required
-              minlength="4"
+              minlength="6"
+            >
+            </ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"
+              ><ion-icon name="key"></ion-icon> Re-Enter New Password</ion-label
+            ><br />
+            <ion-input
+              type="password"
+              name="repassword"
+              ngModel
+              required
+              minlength="6"
             ></ion-input>
           </ion-item>
           <ion-row>
             <ion-col offset=".7">
-              <ion-button color="black" (click)="back()"
-                >Back to Login</ion-button
-              >
+            
               <ion-button type="submit()" [disabled]="f.invalid"
-                >Submit OTP</ion-button
+                >Submit Password</ion-button
               >
             </ion-col>
           </ion-row>
         </form>
       </ion-col>
     </ion-row>
+    
   </ion-grid>
 </ion-content>

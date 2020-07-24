@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { runInThisContext } from 'vm';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,13 @@ import { Injectable } from '@angular/core';
 export class ResetpasswordService {
 
   constructor() { }
-  otp:number;
+  email:string;
+  setemail(email:string)
+  {
+    this.email=email;
+  }
+  getemail(){
+    return this.email;
+    }
  
 }

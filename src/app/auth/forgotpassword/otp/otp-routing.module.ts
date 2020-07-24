@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: OtpPage
+  },
+  {
+    path: 'reset-password',
+    loadChildren: () => import('./validate-otp/validate-otp.module').then( m => m.ValidateOtpPageModule)
   }
 ];
 
