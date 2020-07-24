@@ -17,7 +17,7 @@ export class SelectClubPage implements OnInit {
   ) {}
   clubs: clubList[] = [];
   city = {};
-  choose: string;
+
 
   ngOnInit() {
     let selectedcity = this.auth.getcity().trim();

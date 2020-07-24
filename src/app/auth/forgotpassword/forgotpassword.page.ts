@@ -14,7 +14,9 @@ export class ForgotpasswordPage implements OnInit {
   ngOnInit() {}
   email={};
   onsubmit(f:NgForm){
-    this.email = { email: f.value.email };
+    this.email = { email: f.value.email.trim() };
+    console.log(this.email);
+    
     this.http.post(
       "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/forgotpasswordotp",this.email
     ).subscribe(re=>{
