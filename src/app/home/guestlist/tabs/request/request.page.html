@@ -1,7 +1,8 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="home/tabs/guestlist/tabs"> </ion-back-button>
+      <ion-back-button defaultHref="home/tabs/guestlist/tabs">
+      </ion-back-button>
     </ion-buttons>
     <ion-title>Request</ion-title>
   </ion-toolbar>
@@ -9,20 +10,22 @@
 
 <ion-content>
   <ion-grid>
-     <ion-row>
-      <ion-col offset=".3">
-        <!-- {{requests.user_data |json}} --><ion-list>
-          <ion-row>
-            <ion-col offset="3">
-              <ion-card>
-                <ion-card-title>{{day}} </ion-card-title>
-              </ion-card>
-            </ion-col>
-          </ion-row>
-        </ion-list>
-</ion-col>
-</ion-row>
-    </ion-grid>
+    <ion-row>
+      <ion-col>
+        <!-- {{requests.user_data |json}} -->
+
+        <ion-card
+          style="
+            background-color: rgb(255, 160, 0);
+            text-align: center;
+            color: black;
+          "
+        >
+          <ion-card-title><h1>{{day}}</h1></ion-card-title>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <!-- {{requests.user_data |json}} -->
   <ion-list *ngFor="let req of requests.user_data let index of index">
     <ion-item>
@@ -30,10 +33,12 @@
         <ion-img [src]="req[0].profile_path"></ion-img>
       </ion-thumbnail>
       <ion-label> {{req [0].email }}</ion-label>
-      <ion-button slot="end" (click)="yes(req [0].uuid)"
+      <ion-fab-button color="success" slot="end" (click)="yes(req [0].uuid)"
         ><ion-icon name="checkmark-done-outline"></ion-icon
-      ></ion-button>
-      <ion-button slot="end" (click)="no(req [0].uuid)">NO</ion-button>
+      ></ion-fab-button>
+      <ion-fab-button color="danger" slot="end" (click)="no(req [0].uuid)"
+        ><ion-icon name="close-outline"></ion-icon
+      ></ion-fab-button>
     </ion-item>
   </ion-list>
 </ion-content>
