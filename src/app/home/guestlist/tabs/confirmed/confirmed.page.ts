@@ -13,6 +13,7 @@ export class ConfirmedPage implements OnInit {
 
   requests:any=[] ;
   day:string=""
+  
   ngOnInit() {
     this.day=this.service.getday();
     let data={

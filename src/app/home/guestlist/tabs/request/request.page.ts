@@ -11,8 +11,9 @@ import { Component, OnInit } from "@angular/core";
 export class RequestPage implements OnInit {
   constructor(private http: HttpClient, private service: GuestListService) {}
   requests: request[] = [];
+  temp: request[] = [];
   day: string = "";
-  ngOnInit() {
+  getdata() {
     this.day = this.service.getday();
     let data = {
       day: this.day.trim(),
@@ -25,11 +26,14 @@ export class RequestPage implements OnInit {
       )
       .subscribe((re) => {
         this.requests = re.data;
-        console.log(this.requests);
+        this.temp = re.data.user_data;
+        console.log(this.temp);
       });
   }
+  ngOnInit() {
+    this.getdata();
+  }
   yes(email: string) {
-    console.log(email);
     let data = { day: "Friday", user: email };
     this.http
       .put(
@@ -38,6 +42,7 @@ export class RequestPage implements OnInit {
       )
       .subscribe((re) => {
         console.log(re);
+        this.getdata();
       });
   }
   no(email: string) {
@@ -50,6 +55,7 @@ export class RequestPage implements OnInit {
       )
       .subscribe((re) => {
         console.log(re);
+         this.getdata();
       });
   }
 }
