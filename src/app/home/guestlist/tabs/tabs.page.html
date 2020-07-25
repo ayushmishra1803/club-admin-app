@@ -3,6 +3,7 @@
       <ion-buttons slot="start">
       <ion-back-button defaultHref="home/tabs/guestlist">
       </ion-back-button>
+
     </ion-buttons>
   <!-- <ion-tabs>
     <ion-tab-bar slot="primary">
@@ -20,12 +21,51 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> 
- <div *ngFor="let day of mode">
-  
-  <ion-card style="background-color:rgb(255,160,0);"(click)="selectedday(day)">
-    <ion-card-title style="text-align: center; color: black;">
-      <h1>{{day}}</h1>
+<ion-content>
+  <br />
+  <br />
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col offset="3.5">
+          <ion-label class="week">GUEST LIST</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <br />
+  <br />
+  <br />
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col offset="3.5">
+          <ion-button color="light">
+            <!-- <ion-icon
+              style="height: 150px; width: 150px;"
+              name="reader"
+            ></ion-icon> -->
+            <ion-img
+              style="
+                border: 1px solid rgb(255, 160, 0);
+                background-color: rgb(255, 160, 0);
+              "
+              src="assets\images\logo\guestlist.jpeg"
+            ></ion-img>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <br />
+  <br />
+  <div *ngFor="let day of mode">
+    <ion-card
+      style="background-color: rgb(255, 160, 0);"
+      (click)="selectedday(day)"
+    >
+      <ion-card-title style="text-align: center; color: black;">
+        <h1>{{day|uppercase}}</h1>
       </ion-card-title>
     </ion-card>
   </div>
