@@ -1,10 +1,28 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>request</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home/tabs/guestlist/tabs"> </ion-back-button>
+    </ion-buttons>
+    <ion-title>Request</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-grid>
+     <ion-row>
+      <ion-col offset=".3">
+        <!-- {{requests.user_data |json}} --><ion-list>
+          <ion-row>
+            <ion-col offset="3">
+              <ion-card>
+                <ion-card-title>{{day}} </ion-card-title>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+</ion-col>
+</ion-row>
+    </ion-grid>
   <!-- {{requests.user_data |json}} -->
   <ion-list *ngFor="let req of requests.user_data let index of index">
     <ion-item>
