@@ -9,10 +9,10 @@
 
 <ion-content>
   
-<ion-list *ngFor="let c of clubs.clublist" (click)="onclick(c)">
+<ion-list *ngFor="let c of clubs" (click)="onclick(c.club_name)">
   <ion-item detail >
-<ion-label>{{c}}</ion-label>
-
+<ion-label>{{c.club_name}}</ion-label><br>
+    <!-- <p >{{c.address}}</p> -->
     </ion-item>
   </ion-list>
  

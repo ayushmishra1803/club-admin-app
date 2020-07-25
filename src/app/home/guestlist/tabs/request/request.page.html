@@ -27,7 +27,7 @@
     </ion-row>
   </ion-grid>
   <!-- {{requests.user_data |json}} -->
-  <ion-list *ngFor="let req of requests.user_data let index of index">
+  <ion-list *ngFor="let req of requests.user_data ">
     <ion-item>
       <ion-thumbnail slot="start">
         <ion-img [src]="req[0].profile_path"></ion-img>

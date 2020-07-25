@@ -20,7 +20,7 @@ export class SelectClubPage implements OnInit {
   city = {};
 
   ngOnInit() {
-    let selectedcity = this.auth.getcity().trim();
+   let selectedcity = this.auth.getcity().trim();
 
     this.city = { city: `${selectedcity.trim()}` };
     console.log(this.city);

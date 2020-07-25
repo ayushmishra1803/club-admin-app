@@ -10,7 +10,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let req of requests.user_data let index of index">
+  <div style="padding: 25px;">
+    <ion-grid>
+      <ion-row>
+        <ion-col offset="3.5">
+          <ion-label class="week">GUEST LIST</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-list *ngFor="let req of requests.user_data let index of index"  style="padding: 10px;">
     <ion-item>
       <ion-thumbnail slot="start">
         <ion-img [src]="req[0].profile_path"></ion-img>
