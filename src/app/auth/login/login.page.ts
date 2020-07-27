@@ -1,10 +1,11 @@
-import { AuthService } from './../../service/auth/auth.service';
+import { AuthService } from "./../../service/auth/auth.service";
 import { data } from "./data";
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { LoadingController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { catchError } from "rxjs/operators";
 
 @Component({
   selector: "app-login",
@@ -16,20 +17,18 @@ export class LoginPage implements OnInit {
     private loading: LoadingController,
     private router: Router,
     private http: HttpClient,
-    private auth:AuthService
+    private auth: AuthService
   ) {}
   post = {};
-  
-  city:string;
-    club:string;
+
+  city: string;
+  club: string;
 
   ngOnInit() {
-    this.city=this.auth.getcity();
-    this.club=this.auth.getclub();
+    this.city = this.auth.getcity();
+    this.club = this.auth.getclub();
     console.log(this.city);
     console.log(this.club);
-    
-    
   }
   onsubmit(f: NgForm) {
     this.post = {
@@ -49,19 +48,24 @@ export class LoginPage implements OnInit {
             "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/login",
             this.post
           )
-          .subscribe((re) => {
-            console.log(re.message);
-            if (!re) {
-              res.dismiss();
-              this.router.navigate(["/login"]);
-            } else {
-              if (re.status === true) {
-                this.router.navigate(["/home"]);
+          .subscribe(
+            (data) => {
+              console.log(data);
+              if (!data) {
                 res.dismiss();
+                this.router.navigate(["/login"]);
+              } else {
+                if (data.status === true) {
+                  this.router.navigate(["/home"]);
+                  res.dismiss();
+                }
               }
+            },
+            (err) => {
+              res.dismiss();
+              console.log("error");
             }
-          });
-         
+          );
       });
   }
 

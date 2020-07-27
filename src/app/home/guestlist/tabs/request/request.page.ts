@@ -11,7 +11,7 @@ import { Component, OnInit } from "@angular/core";
 export class RequestPage implements OnInit {
   constructor(private http: HttpClient, private service: GuestListService) {}
   requests: request[] = [];
-  temp: request[] = [];
+  
   day: string = "";
   getdata() {
     this.day = this.service.getday();
@@ -26,8 +26,8 @@ export class RequestPage implements OnInit {
       )
       .subscribe((re) => {
         this.requests = re.data;
-        this.temp = re.data.user_data;
-        console.log(this.temp);
+      
+        console.log(this.requests);
       });
   }
   ngOnInit() {
