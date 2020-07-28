@@ -8,11 +8,12 @@
   <div class="week">
     <ion-label>This Week</ion-label>
   </div>
-<div *ngFor="let day of days">
+<div *ngFor="let day of week">
   
   <ion-card style="background-color:rgb(255,160,0);"(click)="selectedday(day)">
     <ion-card-title style="text-align: center; color: black;">
-      <h1>{{day}}</h1>
+      <h2>{{day |date}}</h2>
+      <h4>{{day|date:"EEEE"}}</h4>
       </ion-card-title>
     </ion-card>
   </div>

@@ -16,14 +16,18 @@ export class RequestPage implements OnInit {
     private auth: AuthService
   ) {}
   requests: request[] = [];
- private token: string;
+  private token: string;
 
   day: string = "";
-  
+  date: string = "";
+
   getdata() {
     this.day = this.service.getday();
+    this.date = this.service.getdate();
     let data = {
-      day: this.day.trim(),
+      //day: this.day.trim(),
+      //date:this.date.trim(),
+      day: "Tuesday",
       date: "2020-07-28",
     };
     let header = new HttpHeaders({
@@ -43,7 +47,6 @@ export class RequestPage implements OnInit {
       });
   }
   ngOnInit() {
-
     this.token = this.auth.getToken();
     console.log(this.token);
 
@@ -53,7 +56,10 @@ export class RequestPage implements OnInit {
     let header = new HttpHeaders({
       Authorization: `Bearer ${this.token}`,
     });
-    let data = { day: "Friday", user: email };
+    //Real Logic
+    // let data = { day: this.day.trim(),date:this.date.trim(), user: email };
+    //dummy test Case
+    let data = { day: "Tuesday", date: "2020-07-28", user: email };
     this.http
       .put(
         "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/guestlist/acceptrequest",
@@ -70,7 +76,10 @@ export class RequestPage implements OnInit {
       Authorization: `Bearer ${this.token}`,
     });
     console.log(email);
-    let data = { day: "Friday", user: email };
+    //Real Logic
+    //  let data = { day: this.day.trim(), date: this.date.trim(), user: email };
+    //Test Case
+    let data = { day: "Tuesday", date: "2020-07-28", user: email };
     this.http
       .put(
         "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/guestlist/denyrequest",

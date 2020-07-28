@@ -19,7 +19,7 @@
       </ion-row>
     </ion-grid>
   </div>
-  <ion-list *ngFor="let req of requests.user_data let index of index"  style="padding: 10px;">
+  <ion-list *ngFor="let req of requests.user_data "  style="padding: 10px;">
     <ion-item>
       <ion-thumbnail slot="start">
         <ion-img [src]="req[0].profile_path"></ion-img>
