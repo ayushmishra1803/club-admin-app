@@ -1,3 +1,4 @@
+import { AuthService } from "./../../../../service/auth/auth.service";
 import { GuestListService } from "./../service/guest-list.service";
 import { request } from "./interface/request-model";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
@@ -9,28 +10,31 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./request.page.scss"],
 })
 export class RequestPage implements OnInit {
-  constructor(private http: HttpClient, private service: GuestListService) {}
+  constructor(
+    private http: HttpClient,
+    private service: GuestListService,
+    private auth: AuthService
+  ) {}
   requests: request[] = [];
-  token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2MDE0NDI5LCJqdGkiOiJiZmM3MGVlNzU3ZGM0OGJiYjYzOWM1MzIyMDgxYzQ0ZSIsInV1aWQiOiIwNTljMThhMi02OWY3LTRlYTAtOTdiZS1kZDEwYTBmYmFiMjEifQ.5dN7vvkIkCrlJUOrFjjLTTAgEc1TLDntywCabbKCq0M";
+ private token: string;
 
-  header = new HttpHeaders({
-    Authorization: `Bearer ${this.token}`,
-  });
   day: string = "";
+  
   getdata() {
     this.day = this.service.getday();
     let data = {
       day: this.day.trim(),
       date: "2020-07-28",
     };
-    
+    let header = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
 
     this.http
       .post<{ data: request[] }>(
         "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/guestlist/request",
         data,
-        { headers: this.header }
+        { headers: header }
       )
       .subscribe((re) => {
         this.requests = re.data;
@@ -39,14 +43,22 @@ export class RequestPage implements OnInit {
       });
   }
   ngOnInit() {
+
+    this.token = this.auth.getToken();
+    console.log(this.token);
+
     this.getdata();
   }
   yes(email: string) {
+    let header = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
     let data = { day: "Friday", user: email };
     this.http
       .put(
         "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/guestlist/acceptrequest",
-        data
+        data,
+        { headers: header }
       )
       .subscribe((re) => {
         console.log(re);
@@ -54,12 +66,16 @@ export class RequestPage implements OnInit {
       });
   }
   no(email: string) {
+    let header = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
     console.log(email);
     let data = { day: "Friday", user: email };
     this.http
       .put(
         "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/guestlist/denyrequest",
-        data
+        data,
+        { headers: header }
       )
       .subscribe((re) => {
         console.log(re);

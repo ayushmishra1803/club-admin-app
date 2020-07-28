@@ -12,6 +12,7 @@ export class AuthService {
   login:login[]=[];
   city:string
   club:string;
+ private access_Token:string;
   selectedCity(data:string){
     if(!data)
     {
@@ -31,6 +32,17 @@ export class AuthService {
   }
   getclub(){
     return this.club;
+  }
+  setToken(token:string){
+   
+    this.access_Token=token;
+   
+    
+  }
+  getToken(){
+  
+    
+    return this.access_Token;
   }
 
 }
