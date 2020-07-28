@@ -1,3 +1,4 @@
+import { clubdata } from './interface/login/clubdata';
 import { AuthService } from "./../../service/auth/auth.service";
 import { data } from "./data";
 import { Component, OnInit } from "@angular/core";
@@ -23,6 +24,7 @@ export class LoginPage implements OnInit {
 
   city: string;
   club: string;
+  clubdata:clubdata[]=[];
 
   ngOnInit() {
     this.city = this.auth.getcity();
@@ -44,7 +46,7 @@ export class LoginPage implements OnInit {
       .then((res) => {
         res.present();
         this.http
-          .post<{ status: boolean; message: string; data: any }>(
+          .post<{ status: boolean; message: string; data: clubdata[] }>(
             "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/login",
             this.post
           )
@@ -56,6 +58,9 @@ export class LoginPage implements OnInit {
                 this.router.navigate(["/login"]);
               } else {
                 if (data.status === true) {
+                  this.clubdata=data.data
+                  console.log(this.clubdata.access);
+                  
                   this.router.navigate(["/home"]);
                   res.dismiss();
                 }
@@ -63,7 +68,7 @@ export class LoginPage implements OnInit {
             },
             (err) => {
               res.dismiss();
-              console.log("error");
+              console.log(err.message);
             }
           );
       });
