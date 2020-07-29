@@ -24,6 +24,7 @@ export class TableService {
   Set_Groupid(id: string) {
     this.groupId = id;
     console.log(this.groupId);
+    this.router.navigate(["/home/tabs/table/tabs/group-details"]);
   }
   get_Groupid(){
     return this.groupId;
