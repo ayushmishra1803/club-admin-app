@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { Router } from "@angular/router";
 import { Injectable } from "@angular/core";
 
@@ -9,6 +10,7 @@ export class TableService {
   private date: string;
   private day: string;
   private groupId: string;
+  buttondisable = new Subject<boolean>();
   setday_date(day: string, date: string) {
     this.date = date;
     this.day = day;
@@ -26,7 +28,7 @@ export class TableService {
     console.log(this.groupId);
     this.router.navigate(["/home/tabs/table/tabs/group-details"]);
   }
-  get_Groupid(){
+  get_Groupid() {
     return this.groupId;
   }
 }

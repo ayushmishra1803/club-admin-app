@@ -22,7 +22,10 @@ export class GroupDetailsPage implements OnInit {
   private date: string;
   private token: string;
   details: group_Details[] = [];
+ 
+
   ngOnInit() {
+    
     this.group_id = this.service.get_Groupid();
     this.token = this.auth.getToken();
 

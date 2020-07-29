@@ -71,7 +71,7 @@ export class ConfirmedComponent implements OnInit {
   }
   groupdetails(id:string)
   {
-    console.log(id);
+    this.service.Set_Groupid(id);
     
   }
 }

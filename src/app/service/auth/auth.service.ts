@@ -2,6 +2,7 @@ import { city } from './../../selection/select-city/interface/selectcity';
 import { login } from './../../auth/interface/login';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class AuthService {
   login:login[]=[];
   city:string
   club:string;
+  
  private access_Token:string;
   selectedCity(data:string){
     if(!data)
