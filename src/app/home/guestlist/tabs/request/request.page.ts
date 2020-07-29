@@ -26,8 +26,8 @@ export class RequestPage implements OnInit {
     this.date = this.service.getdate();
     let data = {
       day: this.day.trim(),
-      date:this.date.trim(),
-     // day: "Tuesday",
+      date: this.date.trim(),
+      // day: "Tuesday",
       //date: "2020-07-28",
     };
     let header = new HttpHeaders({
@@ -57,7 +57,7 @@ export class RequestPage implements OnInit {
       Authorization: `Bearer ${this.token}`,
     });
     //Real Logic
-     let data = { day: this.day.trim(),date:this.date.trim(), user: email };
+    let data = { day: this.day.trim(), date: this.date.trim(), user: email };
     //dummy test Case
     //let data = { day: "Tuesday", date: "2020-07-28", user: email };
     this.http
@@ -77,7 +77,7 @@ export class RequestPage implements OnInit {
     });
     console.log(email);
     //Real Logic
-      let data = { day: this.day.trim(), date: this.date.trim(), user: email };
+    let data = { day: this.day.trim(), date: this.date.trim(), user: email };
     //Test Case
     //let data = { day: "Tuesday", date: "2020-07-28", user: email };
     this.http
