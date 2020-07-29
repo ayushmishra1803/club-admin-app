@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { TableService } from "./service/table/table.service";
 import { DatePipe } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
@@ -8,7 +9,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./table.page.scss"],
 })
 export class TablePage implements OnInit {
-  constructor(private date: DatePipe, private service: TableService) {}
+  constructor(private date: DatePipe, private service: TableService,private Router:Router) {}
   week: number[] = [];
   ngOnInit() {
     for (let i = 0; i < 7; i++) {
@@ -22,5 +23,6 @@ export class TablePage implements OnInit {
       this.date.transform(day, "EEEE"),
       this.date.transform(day, "yyyy-MM-dd")
     );
+    
   }
 }

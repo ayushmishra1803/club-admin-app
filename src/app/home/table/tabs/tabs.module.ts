@@ -1,3 +1,5 @@
+import { ConfirmedComponent } from './confirmed/confirmed.component';
+import { RequestComponent } from './request/request.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +17,6 @@ import { TabsPage } from './tabs.page';
     IonicModule,
     TabsPageRoutingModule
   ],
-  declarations: [TabsPage]
+  declarations: [TabsPage,RequestComponent,ConfirmedComponent]
 })
 export class TabsPageModule {}

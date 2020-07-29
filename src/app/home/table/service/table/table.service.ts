@@ -1,17 +1,18 @@
+import { Router } from "@angular/router";
 import { Injectable } from "@angular/core";
 
 @Injectable({
   providedIn: "root",
 })
 export class TableService {
-  constructor() {}
+  constructor(private router: Router) {}
   private date: string;
   private day: string;
   setday_date(day: string, date: string) {
     this.date = date;
     this.day = day;
-    console.log(this.date,this.day);
-    
+    console.log(this.date, this.day);
+    this.router.navigate(["/home/tabs/table/tabs"]);
   }
   getdate() {
     return this.date;
