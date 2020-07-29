@@ -1,3 +1,70 @@
-<p>
-  request works!
-</p>
+<div style="padding-top: 30px;">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2">
+        <div>
+          <ion-segment class="month">
+            <p class="fontsize">{{ month }}</p>
+          </ion-segment>
+        </div>
+      </ion-col>
+      <ion-col size="2"> </ion-col>
+      <ion-col size="8">
+        <div>
+          <ion-segment scrollable>
+            <ion-segment-button
+              *ngFor="let category of days"
+              [value]="category"
+              (click)="onCategoryChange(category)"
+            >
+              <ion-label>
+                {{ category | date: "E" }}
+              </ion-label>
+              <ion-label class="date">
+                <p class="datefont">{{ category | date: "d" }}</p>
+              </ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+<div>
+  <div *ngFor="let req of request">
+    <!-- {{req.groudiv_detail|json}}   --><ion-card
+      class="card"
+      *ngFor="let details of req.group_detail"
+      (click)="groupdetails(req.groups_id)"
+    >
+      <ion-grid>
+        <ion-row
+          ><ion-col size="3">
+            <img src="" />
+          </ion-col>
+          <ion-col size="3"
+            ><p
+              style="font-size: 11.5px; text-align: center; padding-top: 25px;"
+            >
+              No. of People
+            </p>
+            <br />
+            <!-- {{total}} -->
+          </ion-col>
+          <ion-col class="font" size="3">
+            <p>
+              Females : {{ req.num_females }}<br /><br />
+              Males :{{ req.num_males }}<br /><br />
+              Others :{{ req.num_others }}<br /><br />
+            </p>
+          </ion-col>
+          <ion-col class="font" size="3"
+            >Click Here for more details<br />
+          </ion-col>
+        </ion-row>
+
+        <!-- {{ details.title }}<br /> -->
+      </ion-grid>
+    </ion-card>
+  </div>
+</div>
