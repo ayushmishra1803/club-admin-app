@@ -31,4 +31,9 @@ export class TableService {
   get_Groupid() {
     return this.groupId;
   }
+  Set_Groupidconform(id: string) {
+    this.groupId = id;
+    console.log(this.groupId);
+    this.router.navigate(["/home/tabs/table/tabs/confirm-group-details"]);
+  }
 }

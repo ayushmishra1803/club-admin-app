@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-back-button Defaulthref="/home/tabs/table/tabs">
+        </ion-back-button>
+      </ion-buttons>
+    <ion-title><h3>group-details</h3></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="center">
+    <ion-card class="cardfill"
+      ><p class="font">Detailed Table <br />Request</p></ion-card
+    >
+    <ion-card class="card"
+      ><p class="font1">
+        No Of People<br />
+        <br />{{details.num_members }}
+      </p></ion-card
+    >
+    <ion-card class="card"
+      ><p class="font1">
+        No. of Male : {{details.num_males}}<br /><br />
+        No of Female : {{details.num_females}}<br /><br />
+        No of Others : {{details.num_others}}
+      </p></ion-card
+    >
+  </div>
+  <div *ngFor="let details of details.members">
+    <ion-card>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="3"
+            ><ion-thumbnail
+              ><img [src]="details[0].profile_path"
+            /></ion-thumbnail>
+          </ion-col>
+          <ion-col size="6">
+            {{details[0].first_name}} {{details[0].last_name}} <br />
+            ( {{details[0].gender}} )</ion-col
+          >
+          <ion-col size="3"
+            ><ion-icon name="star" style="color: rgb(255, 160, 0);"></ion-icon
+            ><br />
+            {{details[0].mobile}}</ion-col
+          >
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </div>
+</ion-content>
