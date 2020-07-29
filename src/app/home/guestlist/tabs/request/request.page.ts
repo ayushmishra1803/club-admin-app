@@ -25,10 +25,10 @@ export class RequestPage implements OnInit {
     this.day = this.service.getday();
     this.date = this.service.getdate();
     let data = {
-      //day: this.day.trim(),
-      //date:this.date.trim(),
-      day: "Tuesday",
-      date: "2020-07-28",
+      day: this.day.trim(),
+      date:this.date.trim(),
+     // day: "Tuesday",
+      //date: "2020-07-28",
     };
     let header = new HttpHeaders({
       Authorization: `Bearer ${this.token}`,
@@ -57,9 +57,9 @@ export class RequestPage implements OnInit {
       Authorization: `Bearer ${this.token}`,
     });
     //Real Logic
-    // let data = { day: this.day.trim(),date:this.date.trim(), user: email };
+     let data = { day: this.day.trim(),date:this.date.trim(), user: email };
     //dummy test Case
-    let data = { day: "Tuesday", date: "2020-07-28", user: email };
+    //let data = { day: "Tuesday", date: "2020-07-28", user: email };
     this.http
       .put(
         "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/guestlist/acceptrequest",
@@ -77,9 +77,9 @@ export class RequestPage implements OnInit {
     });
     console.log(email);
     //Real Logic
-    //  let data = { day: this.day.trim(), date: this.date.trim(), user: email };
+      let data = { day: this.day.trim(), date: this.date.trim(), user: email };
     //Test Case
-    let data = { day: "Tuesday", date: "2020-07-28", user: email };
+    //let data = { day: "Tuesday", date: "2020-07-28", user: email };
     this.http
       .put(
         "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/guestlist/denyrequest",
