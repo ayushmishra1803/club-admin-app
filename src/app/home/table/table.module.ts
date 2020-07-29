@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
@@ -15,6 +15,7 @@ import { TablePage } from './table.page';
     IonicModule,
     TablePageRoutingModule
   ],
-  declarations: [TablePage]
+  declarations: [TablePage],
+  providers:[DatePipe]
 })
 export class TablePageModule {}
