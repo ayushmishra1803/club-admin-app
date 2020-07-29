@@ -1,3 +1,32 @@
-<p>
-  confirmed works!
-</p>
+<div style="padding-top: 30px;">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="2">
+        <div>
+          <ion-segment class="month">
+            <p class="fontsize">{{ month }}</p>
+          </ion-segment>
+        </div>
+      </ion-col>
+      <ion-col size="2"> </ion-col>
+      <ion-col size="8">
+        <div>
+          <ion-segment scrollable>
+            <ion-segment-button
+              *ngFor="let category of days"
+              [value]="category"
+              (click)="onCategoryChange(category)"
+            >
+              <ion-label>
+                {{ category | date: "E" }}
+              </ion-label>
+              <ion-label class="date">
+                <p class="datefont">{{ category | date: "d" }}</p>
+              </ion-label>
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
