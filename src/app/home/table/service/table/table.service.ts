@@ -21,8 +21,11 @@ export class TableService {
   getday() {
     return this.day;
   }
-  get_Groupid(id: string) {
+  Set_Groupid(id: string) {
     this.groupId = id;
     console.log(this.groupId);
+  }
+  get_Groupid(){
+    return this.groupId;
   }
 }

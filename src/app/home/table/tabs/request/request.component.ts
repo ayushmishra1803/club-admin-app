@@ -56,7 +56,9 @@ export class RequestComponent implements OnInit {
     }
     console.log(this.days);
   }
-  groupdetails(id: string) {}
+  groupdetails(id: string) {
+    this.servie.Set_Groupid(id);
+  }
   onCategoryChange(category: string) {
     console.log(this.dates.transform(category, "EEEE"));
     console.log(this.dates.transform(category));
