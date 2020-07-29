@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: TabsPage
+  },
+  {
+    path: 'group-details',
+    loadChildren: () => import('./request/group-details/group-details.module').then( m => m.GroupDetailsPageModule)
   }
 ];
 
