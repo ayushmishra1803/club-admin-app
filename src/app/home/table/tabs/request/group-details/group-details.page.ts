@@ -1,3 +1,5 @@
+import { group_Details } from "./interface/group";
+
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { TableService } from "./../../../service/table/table.service";
 import { AuthService } from "./../../../../../service/auth/auth.service";
@@ -19,21 +21,63 @@ export class GroupDetailsPage implements OnInit {
   private day: string;
   private date: string;
   private token: string;
+  details: group_Details[] = [];
   ngOnInit() {
-    // this.date = this.service.getdate();
-    // this.day = this.service.getday();
     this.group_id = this.service.get_Groupid();
     this.token = this.auth.getToken();
-    // let data = {
-    //   day: this.day.trim(),
-    //   date: this.date.trim(),
-    // };
+
     let header = new HttpHeaders({
       Authorization: `Bearer ${this.token}`,
     });
     this.http
-      .get(
+      .get<{ data: group_Details }>(
         `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/groupdetails/${this.group_id}`,
+        { headers: header }
+      )
+      .subscribe((re) => {
+        this.details = re.data;
+        console.log(this.details);
+      });
+  }
+  yes(id: string) {
+    console.log(id);
+
+    this.date = this.service.getdate();
+    this.day = this.service.getday();
+    let data = {
+      day: this.day.trim(),
+      date: this.date.trim(),
+    };
+
+    let header = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
+    this.http
+      .put(
+        `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/tablelist/acceptrequest/${id}`,
+        data,
+        { headers: header }
+      )
+      .subscribe((re) => {
+        console.log(re);
+      });
+  }
+  no(id: string) {
+    console.log(id);
+    this.date = this.service.getdate();
+    this.day = this.service.getday();
+    let data = {
+      day: this.day.trim(),
+      date: this.date.trim(),
+    };
+
+    let header = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
+    this.http
+      .put(
+        `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/tablelist/denyrequest/${id}`,
+        data,
         { headers: header }
       )
       .subscribe((re) => {

@@ -1,0 +1,38 @@
+.center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.cardfill {
+  height: 80px;
+  background-color: rgb(255, 160, 0);
+  border-radius: 0px;
+  color: white;
+  width: 300px;
+  text-align: center;
+}
+.icon {
+  height: 100px;
+  width: 100px;
+}
+.card {
+  border: 2px solid rgb(255, 160, 0);
+  border-radius: 0px;
+  height: 80px;
+  width: 280px;
+  background-color: black;
+}
+ion-card {
+  border: 2px solid rgb(255, 160, 0);
+  background-color: rgb(37, 37, 37);
+  color: white;
+}
+.font {
+  font-size: 13px;
+  padding: 5px;
+}
+.font1 {
+  font-size: 10px;
+}
