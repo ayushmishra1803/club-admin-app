@@ -22,10 +22,8 @@ export class GroupDetailsPage implements OnInit {
   private date: string;
   private token: string;
   details: group_Details[] = [];
- 
 
   ngOnInit() {
-    
     this.group_id = this.service.get_Groupid();
     this.token = this.auth.getToken();
 
@@ -33,7 +31,7 @@ export class GroupDetailsPage implements OnInit {
       Authorization: `Bearer ${this.token}`,
     });
     this.http
-      .get<{ data: group_Details }>(
+      .get<{ data: group_Details[] }>(
         `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/groupdetails/${this.group_id}`,
         { headers: header }
       )
