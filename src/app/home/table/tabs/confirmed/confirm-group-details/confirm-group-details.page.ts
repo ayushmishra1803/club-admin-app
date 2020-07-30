@@ -30,7 +30,7 @@ export class ConfirmGroupDetailsPage implements OnInit {
        Authorization: `Bearer ${this.token}`,
      });
      this.http
-       .get<{ data: group_Details }>(
+       .get<{ data: group_Details[] }>(
          `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/groupdetails/${this.group_id}`,
          { headers: header }
        )
