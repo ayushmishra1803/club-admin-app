@@ -31,18 +31,13 @@
       </ion-row>
     </ion-grid>
   </div>
-  <br />
-  <br />
-  <br />
+
   <div>
-    <ion-grid>
+    <!-- <ion-grid>
       <ion-row>
         <ion-col offset="3.5">
           <ion-button color="light">
-            <!-- <ion-icon
-              style="height: 150px; width: 150px;"
-              name="reader"
-            ></ion-icon> -->
+           
             <ion-img
               style="
                 border: 1px solid rgb(255, 160, 0);
@@ -53,18 +48,24 @@
           </ion-button>
         </ion-col>
       </ion-row>
-    </ion-grid>
+    </ion-grid> -->
   </div>
   <br />
   <br />
-  <div *ngFor="let day of mode">
-    <ion-card
-      style="background-color: rgb(255, 160, 0);"
-      (click)="selectedday(day)"
-    >
-      <ion-card-title style="text-align: center; color: black;">
-        <h1>{{day|uppercase}}</h1>
-      </ion-card-title>
-    </ion-card>
+  <ion-segment [(ngModel)]="Table">
+    <ion-segment-button value="Request">
+      <ion-label>Request</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Confirmed">
+      <ion-label>Confirmed</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="Table">
+    <ion-list *ngSwitchCase="'Request'">
+      <app-guest-list-request></app-guest-list-request>
+    </ion-list>
+    <ion-list *ngSwitchCase="'Confirmed'">
+      <app-guestlist-confirmed></app-guestlist-confirmed>
+    </ion-list>
   </div>
 </ion-content>

@@ -1,0 +1,32 @@
+ <ion-grid>
+    <ion-row>
+      <ion-col>
+        <!-- {{requests.user_data |json}} -->
+
+        <ion-card
+          style="
+            background-color: rgb(255, 160, 0);
+            text-align: center;
+            color: black;
+          "
+        >
+          <ion-card-title><h1>{{day}}</h1></ion-card-title>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- {{requests.user_data |json}} -->
+  <ion-list *ngFor="let req of requests.user_data ">
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <ion-img [src]="req[0].profile_path"></ion-img>
+      </ion-thumbnail>
+      <ion-label> {{req [0].email }}</ion-label>
+      <ion-fab-button color="success" slot="end" (click)="yes(req [0].uuid)"
+        ><ion-icon name="checkmark-done-outline"></ion-icon
+      ></ion-fab-button>
+      <ion-fab-button color="danger" slot="end" (click)="no(req [0].uuid)"
+        ><ion-icon name="close-outline"></ion-icon
+      ></ion-fab-button>
+    </ion-item>
+  </ion-list>

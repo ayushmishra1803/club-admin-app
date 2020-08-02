@@ -1,5 +1,5 @@
-import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-tabs",
@@ -8,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabsPage implements OnInit {
   constructor(private router: Router) {}
+  Table: string;
 
-  ngOnInit() {}
-  mode = ["request", "confirmed"];
-  selectedday(type:string){
-    this.router.navigate([`/home/tabs/guestlist/tabs/${type}`]);
+  ngOnInit() {
+    this.Table = "Request";
   }
 }
