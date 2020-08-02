@@ -20,6 +20,7 @@ export class ConfirmedComponent implements OnInit {
 
   private date: string;
   private day: string;
+  total: Number;
   private token: string;
   nowmonth = new Date();
   days: number[] = [];
@@ -66,12 +67,11 @@ export class ConfirmedComponent implements OnInit {
       )
       .subscribe((re) => {
         this.request = re.data;
+         this.total = re.data.length;
         console.log(re);
       });
   }
-  groupdetails(id:string)
-  {
+  groupdetails(id: string) {
     this.service.Set_Groupidconform(id);
-    
   }
 }

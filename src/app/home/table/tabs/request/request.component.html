@@ -30,6 +30,20 @@
     </ion-row>
   </ion-grid>
 </div>
+<div class="center">
+  <p class="font">
+    <ion-card
+      style="
+        border: 2px solid rgb(255, 160, 0);
+        font-size: 20px;
+        color:white;
+        text-align: center;
+        padding: 5px;
+      "
+      >Total : {{ total }}</ion-card
+    >
+  </p>
+</div>
 <div>
   <div *ngFor="let req of request">
     <!-- {{req.groudiv_detail|json}}   --><ion-card

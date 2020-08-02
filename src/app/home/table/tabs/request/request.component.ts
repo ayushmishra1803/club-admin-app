@@ -21,6 +21,7 @@ export class RequestComponent implements OnInit {
   private date: string;
   private token: string;
   request: request[] = [];
+  total: Number;
   nowmonth = new Date();
   days: number[] = [];
   month: string;
@@ -40,6 +41,7 @@ export class RequestComponent implements OnInit {
       )
       .subscribe((re) => {
         this.request = re.data;
+        this.total = re.data.length;
         console.log(this.request);
       });
   }
@@ -65,11 +67,10 @@ export class RequestComponent implements OnInit {
     this.month = this.dates.transform(category, "MMM");
     this.date = this.dates.transform(category, "yyyy-MM-dd");
     this.day = this.dates.transform(category, "EEEE");
-      this.servie.setday_date(
-        this.dates.transform(category, "EEEE"),
-        this.dates.transform(category, "yyyy-MM-dd")
-      );
+    this.servie.setday_date(
+      this.dates.transform(category, "EEEE"),
+      this.dates.transform(category, "yyyy-MM-dd")
+    );
     this.getrequest();
-
   }
 }
