@@ -1,6 +1,7 @@
+import { request } from './../../../table/tabs/request/interface/request';
 import { AuthService } from "./../../../../service/auth/auth.service";
 import { GuestListService } from "./../service/guest-list.service";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
