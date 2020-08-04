@@ -60,7 +60,7 @@ export class LoginPage implements OnInit {
                 if (data.status === true) {
                   this.clubdata=data.data
                 
-          //  this.auth.setToken(this.clubdata.access);
+           this.auth.setToken(this.clubdata.access);
                   
                   this.router.navigate(["/home"]);
                   res.dismiss();
