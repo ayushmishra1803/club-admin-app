@@ -31,7 +31,7 @@ export class OngoingorderDetailPage implements OnInit {
       )
       .subscribe((re) => {
         this.onGoingDetails=re.data;
-        console.log(re);
+        console.log(this.onGoingDetails);
       });
   }
   generateBill() {
