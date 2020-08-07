@@ -1,4 +1,5 @@
-import { order } from './interface/onGoing';
+import { OrderdetailsService } from "./../service/order/orderdetails.service";
+import { order } from "./interface/onGoing";
 import { AuthService } from "./../../../service/auth/auth.service";
 import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
@@ -13,7 +14,8 @@ export class OnGoingComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private auth: AuthService
+    private auth: AuthService,
+    private order: OrderdetailsService
   ) {}
   onGoingData: order[] = [];
 
@@ -38,9 +40,8 @@ export class OnGoingComponent implements OnInit {
         console.log(re);
       });
   }
-  details(id:string)
-  {
+  details(id: string) {
+    this.order.setOrderId(id);
     console.log(id);
-    
   }
 }
