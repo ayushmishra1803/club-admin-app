@@ -35,6 +35,22 @@ export class OngoingorderDetailPage implements OnInit {
       });
   }
   generateBill() {
-   
+    let token =
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2ODkwNDg5LCJqdGkiOiJkMjhlNTA4YzBmOTI0MWNmODc5ZDJlYjlkZWNhMzJjYSIsInV1aWQiOiIwNTljMThhMi02OWY3LTRlYTAtOTdiZS1kZDEwYTBmYmFiMjEifQ.oqtWfXD91RZm5bqP1Oeq4dNXj7rM9Yseh_ris0-2zkE";
+
+    let header = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    const data = {};
+    this.http
+      .put(
+        `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/order/complete/${this.orderId}`,
+        data,
+        { headers: header }
+      )
+      .subscribe((re) => {
+        this.router.navigate(["/home/tabs/order"]);
+        console.log(re);
+      });
   }
 }
