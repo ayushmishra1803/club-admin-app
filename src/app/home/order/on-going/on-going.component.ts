@@ -15,7 +15,7 @@ export class OnGoingComponent implements OnInit {
     private router: Router,
     private auth: AuthService
   ) {}
-  onGoingData:order[]=[]
+  onGoingData: order[] = [];
 
   ngOnInit() {
     let token =
@@ -28,14 +28,19 @@ export class OnGoingComponent implements OnInit {
       day: "Monday",
     };
     this.http
-      .post<{message:string,data:order[]}>(
+      .post<{ message: string; data: order[] }>(
         "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/order/ongoing",
         data,
         { headers: header }
       )
       .subscribe((re) => {
-        this.onGoingData=re.data
+        this.onGoingData = re.data;
         console.log(re);
       });
+  }
+  details(id:string)
+  {
+    console.log(id);
+    
   }
 }

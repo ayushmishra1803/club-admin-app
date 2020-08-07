@@ -1,7 +1,7 @@
 
   <div class="center">
     <div *ngFor="let on of onGoingData" >
-      <ion-list >
+      <ion-list (click)="details(on.uuid)">
         <ion-grid>
           <ion-row class="border">
             <ion-col size="3" class="border"
