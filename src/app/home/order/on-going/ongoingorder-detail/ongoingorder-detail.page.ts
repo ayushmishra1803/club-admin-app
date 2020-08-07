@@ -22,12 +22,16 @@ export class OngoingorderDetailPage implements OnInit {
       Authorization: `Bearer ${token}`,
     });
     this.orderId = this.order.getOrderId();
-    this.http.get(
-      `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/orderdetails/${this.orderId}`,
-      { headers: header }
-    ).subscribe(re=>{
-      console.log(re);
-      
-    });
+    this.http
+      .get(
+        `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/orderdetails/${this.orderId}`,
+        { headers: header }
+      )
+      .subscribe((re) => {
+        console.log(re);
+      });
+  }
+  generateBill(){
+    
   }
 }
