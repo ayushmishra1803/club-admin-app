@@ -31,7 +31,5 @@ export class OngoingorderDetailPage implements OnInit {
         console.log(re);
       });
   }
-  generateBill(){
-    
-  }
+  generateBill() {}
 }
