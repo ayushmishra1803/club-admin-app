@@ -1,12 +1,11 @@
-import { clubdata } from './interface/login/clubdata';
+import { clubdata } from "./interface/login/clubdata";
 import { AuthService } from "./../../service/auth/auth.service";
-import { data } from "./data";
+
 import { Component, OnInit } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { LoadingController } from "@ionic/angular";
 import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { catchError } from "rxjs/operators";
 
 @Component({
   selector: "app-login",
@@ -24,7 +23,7 @@ export class LoginPage implements OnInit {
 
   city: string;
   club: string;
-  clubdata:clubdata[]=[];
+  clubdata: clubdata[] = [];
 
   ngOnInit() {
     this.city = this.auth.getcity();
@@ -58,10 +57,10 @@ export class LoginPage implements OnInit {
                 this.router.navigate(["/login"]);
               } else {
                 if (data.status === true) {
-                  this.clubdata=data.data
-                
-           this.auth.setToken(this.clubdata.access);
-                  
+                  this.clubdata = data.data;
+
+                  this.auth.setToken(this.clubdata.access);
+
                   this.router.navigate(["/home"]);
                   res.dismiss();
                 }
