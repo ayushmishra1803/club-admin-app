@@ -5,5 +5,25 @@
 </ion-header>
 
 <ion-content>
+  <ion-segment [(ngModel)]="Orders">
+    <ion-segment-button value="Tables">
+      <ion-label>Tables </ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="On-Going">
+      <ion-label>On-Going</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Completed">
+      <ion-label>Completed</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="Orders">
+    <ion-list *ngSwitchCase="'Request'">
+      <!-- <app-request></app-request> -->
+    </ion-list>
+    <ion-list *ngSwitchCase="'Confirmed'">
+      <!-- <app-confirmed></app-confirmed> -->
+    </ion-list>
 
+    <ion-list *ngSwitchCase="'Request'"> </ion-list>
+  </div>
 </ion-content>
