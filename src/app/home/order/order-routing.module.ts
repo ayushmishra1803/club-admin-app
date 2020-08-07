@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: OrderPage
+  },
+  {
+    path: 'ongoingorder-detail',
+    loadChildren: () => import('./on-going/ongoingorder-detail/ongoingorder-detail.module').then( m => m.OngoingorderDetailPageModule)
   }
 ];
 
