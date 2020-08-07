@@ -1,3 +1,6 @@
+import { CompletedComponent } from './completed/completed.component';
+import { OnGoingComponent } from './on-going/on-going.component';
+import { BookedTablesComponent } from './booked-tables/booked-tables.component';
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
@@ -10,6 +13,6 @@ import { OrderPage } from "./order.page";
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, OrderPageRoutingModule],
-  declarations: [OrderPage],
+  declarations: [OrderPage,BookedTablesComponent,OnGoingComponent,CompletedComponent],
 })
 export class OrderPageModule {}

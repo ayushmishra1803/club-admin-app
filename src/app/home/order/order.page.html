@@ -17,13 +17,15 @@
     </ion-segment-button>
   </ion-segment>
   <div [ngSwitch]="Orders">
-    <ion-list *ngSwitchCase="'Request'">
-      <!-- <app-request></app-request> -->
+    <ion-list *ngSwitchCase="'Tables'">
+      <app-booked-tables></app-booked-tables>
     </ion-list>
-    <ion-list *ngSwitchCase="'Confirmed'">
-      <!-- <app-confirmed></app-confirmed> -->
+    <ion-list *ngSwitchCase="'On-Going'">
+      <app-on-going></app-on-going>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'Request'"> </ion-list>
+    <ion-list *ngSwitchCase="'Completed'"> 
+      <app-completed></app-completed>
+    </ion-list>
   </div>
 </ion-content>
