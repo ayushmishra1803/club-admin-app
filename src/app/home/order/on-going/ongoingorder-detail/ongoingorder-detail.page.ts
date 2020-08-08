@@ -1,4 +1,4 @@
-import { OrderdetailsService} from "./../../service/order/orderdetails.service";
+import { OrderdetailsService } from "./../../service/order/orderdetails.service";
 import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
@@ -16,11 +16,11 @@ export class OngoingorderDetailPage implements OnInit {
     private order: OrderdetailsService
   ) {}
   orderId: string;
-  completed:boolean
-  orderdetails: itemdetails[]=[];
-  onGoingDetails:onGoingDetails;
+  completed: boolean;
+  orderdetails: itemdetails[] = [];
+  onGoingDetails: onGoingDetails;
+  loop = 1;
   ngOnInit() {
-     this.completed = this.order.getiscompleted();
     let token =
       "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2OTg3Nzg0LCJqdGkiOiJhMzQ1MmU4N2QwNzU0ZjljOWRjODE2MTJlZWQ5ZjRjYSIsInV1aWQiOiIwYTc2MzI2ZC1jZWU4LTRjMzAtYmUyYy03NTgzZDE3ZTg5OGQifQ.qzYBwURN5Gee9GhhRffR2PHjvbCoXtVd7jV7DsoPd4Q";
     let header = new HttpHeaders({
@@ -34,9 +34,11 @@ export class OngoingorderDetailPage implements OnInit {
       )
       .subscribe((re) => {
         this.onGoingDetails = re.data;
-        this.orderdetails=re.data.items
+        this.orderdetails = re.data.items;
         console.log(this.onGoingDetails);
       });
+    this.completed = this.order.getiscompleted();
+    this.router.navigate(["/home/tabs/order/ongoingorder-detail"]);
   }
   generateBill() {
     let token =
@@ -60,5 +62,10 @@ export class OngoingorderDetailPage implements OnInit {
   add() {
     console.log("Hello");
     this.router.navigate(["home/tabs/order/ongoingorder-detail/update-order"]);
+  }
+  back() {
+    console.log("backwork");
+
+    this.router.navigate(["/home/tabs/order"]);
   }
 }

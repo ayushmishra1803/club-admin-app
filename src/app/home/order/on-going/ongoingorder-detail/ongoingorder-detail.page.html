@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home/tabs/order"> </ion-back-button>
+      <ion-back-button (click)="back()" defaultHref="/home/tabs/order"></ion-back-button>
     </ion-buttons>
     <ion-title><h3>Order-Detail</h3></ion-title>
     <ion-buttons slot="end" *ngIf="completed === false">
@@ -12,26 +12,32 @@
   </ion-toolbar>
 </ion-header>
 
-
-
-
-
-
-
 <ion-content>
   <div>
-   <ion-grid>
-     <ion-row>
-       <ion-col size="3"><p style="color: rgb(255,160,0);">Date  </p>{{onGoingDetails.confirmed_table__date}}</ion-col>
-       <ion-col size="2.5"><p style="color: rgb(255,160,0);">Table No   </p>{{onGoingDetails.confirmed_table__table_booked__table_num}}</ion-col>
-       <ion-col size="3.5"><p style="color: rgb(255,160,0);">Group Name   </p>{{onGoingDetails.confirmed_table__groups__title}}</ion-col>
-       <ion-col size="3"><p style="color: rgb(255,160,0);">Order No  </p> {{onGoingDetails.order_number}}</ion-col>
-     </ion-row>
-   </ion-grid>
+    <ion-grid >
+      <ion-row>
+        <ion-col size="3"
+          ><p style="color: rgb(255, 160, 0);">Date</p>
+          {{onGoingDetails.confirmed_table__date}}</ion-col
+        >
+        <ion-col size="2.5"
+          ><p style="color: rgb(255, 160, 0);">Table No</p>
+          {{onGoingDetails.confirmed_table__table_booked__table_num}}</ion-col
+        >
+        <ion-col size="3.5"
+          ><p style="color: rgb(255, 160, 0);">Group Name</p>
+          {{onGoingDetails.confirmed_table__groups__title}}</ion-col
+        >
+        <ion-col size="3"
+          ><p style="color: rgb(255, 160, 0);">Order No</p>
+          {{onGoingDetails.order_number}}</ion-col
+        >
+      </ion-row>
+    </ion-grid>
     <div>
       <table class="bordero">
         <tr>
-          <td class="bordero" >Quantity</td>
+          <td class="bordero">Quantity</td>
           <td class="bordero">Price</td>
           <td class="bordero">Items</td>
           <td class="bordero">Amount</td>
@@ -51,18 +57,12 @@
         </tr>
         <tr>
           <th class="border1"></th>
-          <th class="bordero" colspan="2">Total Amount</th>          
-          <th class="bordero"> {{onGoingDetails.total_price | currency}}</th>          
+          <th class="bordero" colspan="2">Total Amount</th>
+          <th class="bordero">{{onGoingDetails.total_price | currency}}</th>
         </tr>
       </table>
     </div>
   </div>
-
-
-
-
-
-
 
   <div>
     <ion-grid *ngIf="completed === false">
