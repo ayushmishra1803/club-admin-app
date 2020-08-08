@@ -9,109 +9,87 @@
 
 <ion-content>
   <ion-grid>
-    <div >
-    <ion-item>
-      <ion-row>
-        <ion-col>
-          <h1>Create New Order</h1>
-        </ion-col>
-      </ion-row>
-    </ion-item>
     <div>
-      <form #f="ngForm">
-        <ion-item>
-          <ion-row>
-            <ion-col>
+      <div>
+        <form #f="ngForm">
+          <ion-item>
+            <ion-row>
               <ion-col>
-                <ion-label position="floating">Enter the Iteam </ion-label>
-                <ion-input
-                  name="iteam"
-                  type="text"
-                  ngModel
-                  [(ngModel)]="name"
-                  required
-                >
-                </ion-input>
+                <ion-col>
+                  <ion-label position="floating">Enter the Iteam </ion-label>
+                  <ion-input
+                    name="iteam"
+                    type="text"
+                    ngModel
+                    [(ngModel)]="name"
+                    required
+                  >
+                  </ion-input>
+                </ion-col>
               </ion-col>
-            </ion-col>
-          </ion-row>
-        </ion-item>
-        <ion-item>
-          <ion-row>
-            <ion-col>
+            </ion-row>
+          </ion-item>
+          <ion-item>
+            <ion-row>
               <ion-col>
-                <ion-label position="floating">Enter the Quantity </ion-label>
-                <ion-input
-                  name="Quantity"
-                  type="number"
-                  ngModel
-                  [(ngModel)]="quantity"
-                  required
-                >
-                </ion-input>
+                <ion-col>
+                  <ion-label position="floating">Enter the Quantity </ion-label>
+                  <ion-input
+                    name="Quantity"
+                    type="number"
+                    ngModel
+                    [(ngModel)]="quantity"
+                    required
+                  >
+                  </ion-input>
+                </ion-col>
               </ion-col>
-            </ion-col>
-          </ion-row>
-        </ion-item>
-        <ion-item
-          ><br /><br />
-          <ion-row>
-            <ion-col>
-              <ion-button [disabled]="f.invalid" (click)="Add()"
-                >Add</ion-button
-              > </ion-col
-            >&nbsp;&nbsp;
-            <ion-col>
-              <ion-button [disabled]="items.length<=0" (click)="submit()">
-                Submit</ion-button
-              >
-            </ion-col>
-          </ion-row>
-        </ion-item>
-      </form>
+            </ion-row>
+          </ion-item>
+          <ion-item
+            ><br /><br />
+            <ion-row>
+              <ion-col>
+                <ion-button [disabled]="f.invalid" (click)="Add()"
+                  >Add</ion-button
+                > </ion-col
+              >&nbsp;&nbsp;
+              <ion-col>
+                <ion-button [disabled]="items.length<=0" (click)="submit()">
+                  Submit</ion-button
+                >
+              </ion-col>
+            </ion-row>
+          </ion-item>
+        </form>
+      </div>
     </div>
-    </div>
-    <br>
-    <div style="padding: 5px;"  >
+    <br />
+    <div style="padding: 5px;">
       <div *ngIf="items.length > 0">
-        <h3>Added Order</h3><br>
+        <h3 class="heading">Added Order</h3>
+        <br />
         <table class="borderbox">
-          <tr  >
+          <tr>
             <th>Iteam</th>
             <th>Quantity</th>
-            <th>Remove</th><br>
+            <th>Remove</th>
+            <br />
           </tr>
-          <tr *ngFor="let item of items"  >
-            <td> {{item.item}}</td>
-            <td>{{item.quantity}}</td>
-            <td><ion-icon name="trash-outline"></ion-icon></td><br>
+          <tr *ngFor="let item of items">
+            <td class="tad">{{item.item}}</td>
+            <td class="tad">{{item.quantity}}</td>
+            <td class="tad">
+              <ion-button
+                color="danger"
+                style="width: 60px; text-align: center;"
+                ><ion-icon name="trash-outline"></ion-icon
+              ></ion-button>
+            </td>
+            <br />
           </tr>
         </table>
-      </div></div>
-    <!-- <div class="borderbox">
-    <div *ngIf="items.length > 0">
-      <div>
-        <h1>Added Order</h1>
-        <ion-row>
-          <ion-col>
-            <h3>Iteam</h3>
-          </ion-col>
-          <ion-col>
-            <h3>Quantity</h3>
-          </ion-col>
-        </ion-row>
       </div>
-      <ion-item *ngFor="let item of items">
-        <ion-row>
-          <ion-col size=6>
-            <h3 style="text-align: center;">{{item.item}}</h3>
-          </ion-col>
-          <ion-col size=6>
-            <h3 style="text-align: center;">{{item.quantity}}</h3>
-          </ion-col>
-        </ion-row>
-      </ion-item>
     </div>
-    </div> -->
   </ion-grid>
 </ion-content>
