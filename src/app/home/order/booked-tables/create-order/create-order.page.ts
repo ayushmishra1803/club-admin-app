@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { OrderdetailsService } from "./../../service/order/orderdetails.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { create } from "./interface/create";
@@ -10,7 +11,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./create-order.page.scss"],
 })
 export class CreateOrderPage implements OnInit {
-  constructor(private http: HttpClient, private service: OrderdetailsService) {}
+  constructor(private http: HttpClient, private service: OrderdetailsService,private router:Router) {}
   quantity: number;
   name: string;
   items: create[] = [];
@@ -45,7 +46,9 @@ export class CreateOrderPage implements OnInit {
         { headers: header }
       )
       .subscribe((re) => {
+        
         console.log(re);
+        this.router.navigate(["//home/tabs/order"]);
       });
   }
 }
