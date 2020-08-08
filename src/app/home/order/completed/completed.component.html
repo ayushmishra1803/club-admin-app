@@ -2,7 +2,7 @@
     <div >
       <ion-list *ngFor="let completed of completedData" >
         <ion-item>
-        <ion-grid>
+        <ion-grid (click)="onclick(completed.uuid)">
           <ion-row class="border">
             <ion-col size="3" class="border"
               ><p style="text-align: center;">

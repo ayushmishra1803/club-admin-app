@@ -16,7 +16,9 @@ export class UpdateOrderPage implements OnInit {
     private http: HttpClient
   ) {}
   orderId: string;
+  completed:boolean
   ngOnInit() {
+   
     this.orderId = this.service.getOrderId();
   }
   onsubmit(f: NgForm) {

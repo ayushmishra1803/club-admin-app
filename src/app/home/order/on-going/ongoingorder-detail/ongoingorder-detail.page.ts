@@ -16,9 +16,11 @@ export class OngoingorderDetailPage implements OnInit {
     private order: OrderdetailsService
   ) {}
   orderId: string;
+  completed:boolean
   orderdetails: itemdetails[]=[];
   onGoingDetails: onGoingDetails;
   ngOnInit() {
+     this.completed = this.order.getiscompleted();
     let token =
       "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2OTg3Nzg0LCJqdGkiOiJhMzQ1MmU4N2QwNzU0ZjljOWRjODE2MTJlZWQ5ZjRjYSIsInV1aWQiOiIwYTc2MzI2ZC1jZWU4LTRjMzAtYmUyYy03NTgzZDE3ZTg5OGQifQ.qzYBwURN5Gee9GhhRffR2PHjvbCoXtVd7jV7DsoPd4Q";
     let header = new HttpHeaders({

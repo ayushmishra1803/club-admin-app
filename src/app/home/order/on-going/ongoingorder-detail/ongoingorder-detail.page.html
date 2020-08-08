@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="/home/tabs/order"> </ion-back-button>
     </ion-buttons>
     <ion-title><h3>Order-Detail</h3></ion-title>
-    <ion-buttons slot="end">
+    <ion-buttons slot="end" *ngIf="completed === false">
       <ion-button (click)="add()">
         <ion-icon name="add"> </ion-icon>
       </ion-button>
@@ -23,7 +23,7 @@
     </ion-grid>
   </div>
   <div>
-    <ion-grid>
+    <ion-grid *ngIf="completed === false">
       <ion-row>
         <ion-col size="6" offset="4">
           <ion-button (click)="generateBill()">Generate Bill</ion-button>

@@ -1,3 +1,4 @@
+import { OrderdetailsService } from "./../service/order/orderdetails.service";
 import { order } from "./../on-going/interface/onGoing";
 import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
@@ -9,7 +10,11 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./completed.component.scss"],
 })
 export class CompletedComponent implements OnInit {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private service: OrderdetailsService
+  ) {}
   completedData: order[] = [];
   ngOnInit() {
     let token =
@@ -31,5 +36,9 @@ export class CompletedComponent implements OnInit {
         this.completedData = re.data;
         console.log(re);
       });
+  }
+  onclick(id: string) {
+    this.service.setOrderId(id, true);
+    this.router.navigate(["/home/tabs/order/ongoingorder-detail"]);
   }
 }
