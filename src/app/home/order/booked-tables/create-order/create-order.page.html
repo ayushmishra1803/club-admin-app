@@ -9,6 +9,7 @@
 
 <ion-content>
   <ion-grid>
+    <div >
     <ion-item>
       <ion-row>
         <ion-col>
@@ -69,6 +70,25 @@
         </ion-item>
       </form>
     </div>
+    </div>
+    <br>
+    <div style="padding: 5px;"  >
+      <div *ngIf="items.length > 0">
+        <h3>Added Order</h3><br>
+        <table class="borderbox">
+          <tr  >
+            <th>Iteam</th>
+            <th>Quantity</th>
+            <th>Remove</th><br>
+          </tr>
+          <tr *ngFor="let item of items"  >
+            <td> {{item.item}}</td>
+            <td>{{item.quantity}}</td>
+            <td><ion-icon name="trash-outline"></ion-icon></td><br>
+          </tr>
+        </table>
+      </div></div>
+    <!-- <div class="borderbox">
     <div *ngIf="items.length > 0">
       <div>
         <h1>Added Order</h1>
@@ -83,14 +103,15 @@
       </div>
       <ion-item *ngFor="let item of items">
         <ion-row>
-          <ion-col>
-            <h3>{{item.item}}</h3>
+          <ion-col size=6>
+            <h3 style="text-align: center;">{{item.item}}</h3>
           </ion-col>
-          <ion-col>
-            <h3>{{item.quantity}}</h3>
+          <ion-col size=6>
+            <h3 style="text-align: center;">{{item.quantity}}</h3>
           </ion-col>
         </ion-row>
       </ion-item>
     </div>
+    </div> -->
   </ion-grid>
 </ion-content>
