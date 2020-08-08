@@ -16,21 +16,20 @@ export class OngoingorderDetailPage implements OnInit {
     private order: OrderdetailsService
   ) {}
   orderId: string;
-  onGoingDetails:onGoingDetails[];
+  onGoingDetails: any[];
   ngOnInit() {
-    let token =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2ODkwNDg5LCJqdGkiOiJkMjhlNTA4YzBmOTI0MWNmODc5ZDJlYjlkZWNhMzJjYSIsInV1aWQiOiIwNTljMThhMi02OWY3LTRlYTAtOTdiZS1kZDEwYTBmYmFiMjEifQ.oqtWfXD91RZm5bqP1Oeq4dNXj7rM9Yseh_ris0-2zkE";
-    let header = new HttpHeaders({
+     let token =
+       "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2OTg3Nzg0LCJqdGkiOiJhMzQ1MmU4N2QwNzU0ZjljOWRjODE2MTJlZWQ5ZjRjYSIsInV1aWQiOiIwYTc2MzI2ZC1jZWU4LTRjMzAtYmUyYy03NTgzZDE3ZTg5OGQifQ.qzYBwURN5Gee9GhhRffR2PHjvbCoXtVd7jV7DsoPd4Q"; let header = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
     this.orderId = this.order.getOrderId();
     this.http
-      .get<{ status: boolean, message: string; data: onGoingDetails[] }>(
-        `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/orderdetails/${this.orderId}`,
+      .get<{ status: boolean; message: string; data: any[] }>(
+        `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/orderdetails/75e694fc-40a7-45e4-9d02-12606427b509`,
         { headers: header }
       )
       .subscribe((re) => {
-        this.onGoingDetails=re.data;
+        this.onGoingDetails = re.data;
         console.log(this.onGoingDetails);
       });
   }
@@ -52,5 +51,10 @@ export class OngoingorderDetailPage implements OnInit {
         this.router.navigate(["/home/tabs/order"]);
         console.log(re);
       });
+  }
+  add(){
+    console.log("Hello");
+    this.router.navigate(["home/tabs/order/ongoingorder-detail/update-order"]);
+    
   }
 }
