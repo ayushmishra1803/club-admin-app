@@ -42,6 +42,7 @@ export class UpdateOrderPage implements OnInit {
       )
       .subscribe((re) => {
         console.log(re);
+        this.router.navigate(["/home/tabs/order/ongoingorder-detail"]);
       });
   }
 }

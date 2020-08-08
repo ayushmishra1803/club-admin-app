@@ -42,14 +42,14 @@ export class OngoingorderDetailPage implements OnInit {
   }
   generateBill() {
     let token =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2ODkwNDg5LCJqdGkiOiJkMjhlNTA4YzBmOTI0MWNmODc5ZDJlYjlkZWNhMzJjYSIsInV1aWQiOiIwNTljMThhMi02OWY3LTRlYTAtOTdiZS1kZDEwYTBmYmFiMjEifQ.oqtWfXD91RZm5bqP1Oeq4dNXj7rM9Yseh_ris0-2zkE";
-
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk3MDA2Nzc1LCJqdGkiOiI2ZjAyYjk3NzlkNmI0MDQyYTMyMTAwN2ZjNGQ3ZjJjYyIsInV1aWQiOiIwYTc2MzI2ZC1jZWU4LTRjMzAtYmUyYy03NTgzZDE3ZTg5OGQifQ.DmQZRc3GG-bLfQidxMwMNpmDnK5eIzUpe5zQUuNG7lk";
+   
     let header = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
     const data = {};
     this.http
-      .put(
+      .post(
         `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/order/complete/${this.orderId}`,
         data,
         { headers: header }
