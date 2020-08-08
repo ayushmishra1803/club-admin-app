@@ -18,7 +18,7 @@ export class OngoingorderDetailPage implements OnInit {
   orderId: string;
   completed:boolean
   orderdetails: itemdetails[]=[];
-  onGoingDetails: onGoingDetails;
+  onGoingDetails:onGoingDetails;
   ngOnInit() {
      this.completed = this.order.getiscompleted();
     let token =

@@ -12,16 +12,58 @@
   </ion-toolbar>
 </ion-header>
 
+
+
+
+
+
+
 <ion-content>
-  <div *ngFor="let order of orderdetails">
-    <ion-grid>
-      <ion-row>
-        <ion-col>{{order.item}} </ion-col>
-        <ion-col>{{order.item}} </ion-col>
-        <ion-col> {{order.item}}</ion-col>
-      </ion-row>
-    </ion-grid>
+  <div>
+   <ion-grid>
+     <ion-row>
+       <ion-col size="3"><p style="color: rgb(255,160,0);">Date  </p>{{onGoingDetails.confirmed_table__date}}</ion-col>
+       <ion-col size="2.5"><p style="color: rgb(255,160,0);">Table No   </p>{{onGoingDetails.confirmed_table__table_booked__table_num}}</ion-col>
+       <ion-col size="3.5"><p style="color: rgb(255,160,0);">Group Name   </p>{{onGoingDetails.confirmed_table__groups__title}}</ion-col>
+       <ion-col size="3"><p style="color: rgb(255,160,0);">Order No  </p> {{onGoingDetails.order_number}}</ion-col>
+     </ion-row>
+   </ion-grid>
+    <div>
+      <table class="bordero">
+        <tr>
+          <td class="bordero" >Quantity</td>
+          <td class="bordero">Price</td>
+          <td class="bordero">Items</td>
+          <td class="bordero">Amount</td>
+        </tr>
+
+        <tr *ngFor="let order of orderdetails">
+          <th class="border1">{{order.quantity}}</th>
+          <th class="border1">{{order.price | currency}}</th>
+          <th class="border1">{{order.item}}</th>
+          <th class="border1">{{order.quantity * order.price}}</th>
+        </tr>
+        <tr>
+          <th class="border1">&nbsp;</th>
+          <th class="border1"></th>
+          <th class="border1"></th>
+          <th class="border1"></th>
+        </tr>
+        <tr>
+          <th class="border1"></th>
+          <th class="bordero" colspan="2">Total Amount</th>          
+          <th class="bordero"> {{onGoingDetails.total_price | currency}}</th>          
+        </tr>
+      </table>
+    </div>
   </div>
+
+
+
+
+
+
+
   <div>
     <ion-grid *ngIf="completed === false">
       <ion-row>
