@@ -21,13 +21,13 @@
         </ion-col>
         <ion-col class="font" size="3"
           >Table Status<br /><br />{{ bt.status }} <br /><br />
-          <br>
-          <div *ngIf="bt.status === 'No Order added'"
-           class="btn"
-          ><br>
-           Create new <br />
-            order<br><br>
-          </div><br>
+          <br />
+          <div *ngIf="bt.status === 'No Order added'" class="btn" (click)="createorder()">
+            <br />
+            Create new <br />
+            order<br /><br />
+          </div>
+          <br />
         </ion-col>
       </ion-row>
 
