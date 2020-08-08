@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OrderdetailsService } from "./../../service/order/orderdetails.service";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
@@ -11,7 +12,11 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./create-order.page.scss"],
 })
 export class CreateOrderPage implements OnInit {
-  constructor(private http: HttpClient, private service: OrderdetailsService,private router:Router) {}
+  constructor(
+    private http: HttpClient,
+    private service: OrderdetailsService,
+    private router: Router
+  ) {}
   quantity: number;
   name: string;
   items: create[] = [];
@@ -19,12 +24,13 @@ export class CreateOrderPage implements OnInit {
   ngOnInit() {
     this.tableId = this.service.getcreateorderId();
   }
-  Add() {
+  Add(f:NgForm) {
     console.log(this.name);
 
     console.log(this.quantity);
     this.items.push({ item: this.name, quantity: this.quantity });
     console.log(this.items);
+    f.reset();
   }
   submit() {
     let data: createorderApi;
@@ -46,9 +52,11 @@ export class CreateOrderPage implements OnInit {
         { headers: header }
       )
       .subscribe((re) => {
-        
         console.log(re);
         this.router.navigate(["//home/tabs/order"]);
       });
+  }
+  delete(item) {
+    this.items.splice(this.items.indexOf(item),1);
   }
 }

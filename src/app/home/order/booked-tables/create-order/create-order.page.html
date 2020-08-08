@@ -50,7 +50,7 @@
             ><br /><br />
             <ion-row>
               <ion-col>
-                <ion-button [disabled]="f.invalid" (click)="Add()"
+                <ion-button [disabled]="f.invalid" (click)="Add(f)"
                   >Add</ion-button
                 > </ion-col
               >&nbsp;&nbsp;
@@ -83,7 +83,7 @@
               <ion-button
                 color="danger"
                 style="width: 60px; text-align: center;"
-                ><ion-icon name="trash-outline"></ion-icon
+              (click)="delete(item.item)"  ><ion-icon name="trash-outline"></ion-icon
               ></ion-button>
             </td>
             <br />
