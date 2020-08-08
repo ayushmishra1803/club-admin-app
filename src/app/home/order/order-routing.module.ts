@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'ongoingorder-detail',
     loadChildren: () => import('./on-going/ongoingorder-detail/ongoingorder-detail.module').then( m => m.OngoingorderDetailPageModule)
+  },
+  {
+    path: 'create-order',
+    loadChildren: () => import('./booked-tables/create-order/create-order.module').then( m => m.CreateOrderPageModule)
   }
 ];
 

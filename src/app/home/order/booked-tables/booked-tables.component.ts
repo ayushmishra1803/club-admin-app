@@ -1,7 +1,7 @@
 import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { BookedTable } from './interface/bookedinterface';
+import { BookedTable } from "./interface/bookedinterface";
 
 @Component({
   selector: "app-booked-tables",
@@ -31,9 +31,8 @@ export class BookedTablesComponent implements OnInit {
         console.log(re);
       });
   }
-  createorder(){
-    
+  createorder() {
     console.log("Hello");
-    
+    this.router.navigate(["/home/tabs/order/create-order"]);
   }
 }
