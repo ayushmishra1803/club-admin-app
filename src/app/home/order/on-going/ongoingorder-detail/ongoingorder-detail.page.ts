@@ -1,8 +1,8 @@
-import { OrderdetailsService } from "./../../service/order/orderdetails.service";
+import { OrderdetailsService} from "./../../service/order/orderdetails.service";
 import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
-import { onGoingDetails } from './Interface/onGoingDetails';
+import { onGoingDetails, itemdetails } from "./Interface/onGoingDetails";
 
 @Component({
   selector: "app-ongoingorder-detail",
@@ -16,20 +16,23 @@ export class OngoingorderDetailPage implements OnInit {
     private order: OrderdetailsService
   ) {}
   orderId: string;
-  onGoingDetails: any[];
+  orderdetails: itemdetails[]=[];
+  onGoingDetails: onGoingDetails;
   ngOnInit() {
-     let token =
-       "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2OTg3Nzg0LCJqdGkiOiJhMzQ1MmU4N2QwNzU0ZjljOWRjODE2MTJlZWQ5ZjRjYSIsInV1aWQiOiIwYTc2MzI2ZC1jZWU4LTRjMzAtYmUyYy03NTgzZDE3ZTg5OGQifQ.qzYBwURN5Gee9GhhRffR2PHjvbCoXtVd7jV7DsoPd4Q"; let header = new HttpHeaders({
+    let token =
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2OTg3Nzg0LCJqdGkiOiJhMzQ1MmU4N2QwNzU0ZjljOWRjODE2MTJlZWQ5ZjRjYSIsInV1aWQiOiIwYTc2MzI2ZC1jZWU4LTRjMzAtYmUyYy03NTgzZDE3ZTg5OGQifQ.qzYBwURN5Gee9GhhRffR2PHjvbCoXtVd7jV7DsoPd4Q";
+    let header = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
     this.orderId = this.order.getOrderId();
     this.http
-      .get<{ status: boolean; message: string; data: any[] }>(
-        `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/orderdetails/75e694fc-40a7-45e4-9d02-12606427b509`,
+      .get<{ status: boolean; message: string; data: onGoingDetails }>(
+        `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/orderdetails/${this.orderId}`,
         { headers: header }
       )
       .subscribe((re) => {
         this.onGoingDetails = re.data;
+        this.orderdetails=re.data.items
         console.log(this.onGoingDetails);
       });
   }
@@ -52,9 +55,8 @@ export class OngoingorderDetailPage implements OnInit {
         console.log(re);
       });
   }
-  add(){
+  add() {
     console.log("Hello");
     this.router.navigate(["home/tabs/order/ongoingorder-detail/update-order"]);
-    
   }
 }

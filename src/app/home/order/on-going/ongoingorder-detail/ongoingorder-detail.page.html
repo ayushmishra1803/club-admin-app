@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="home/tabs/order"> </ion-back-button>
+      <ion-back-button defaultHref="/home/tabs/order"> </ion-back-button>
     </ion-buttons>
     <ion-title><h3>Order-Detail</h3></ion-title>
     <ion-buttons slot="end">
@@ -13,24 +13,22 @@
 </ion-header>
 
 <ion-content>
-  <div *ngFor="let order of onGoingDetails.items">
-    {{order.item}}
+  <div *ngFor="let order of orderdetails">
     <ion-grid>
       <ion-row>
-        
-        <ion-col>  </ion-col>
-        <ion-col>  </ion-col>
-        <ion-col>  </ion-col>
+        <ion-col>{{order.item}} </ion-col>
+        <ion-col>{{order.item}} </ion-col>
+        <ion-col> {{order.item}}</ion-col>
       </ion-row>
     </ion-grid>
-    </div>
-    <div>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6" offset="4">
-        <ion-button (click)="generateBill()">Generate Bill</ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</div>
+  </div>
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" offset="4">
+          <ion-button (click)="generateBill()">Generate Bill</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
 </ion-content>

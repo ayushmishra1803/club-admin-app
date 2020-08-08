@@ -43,5 +43,6 @@ export class OnGoingComponent implements OnInit {
   details(id: string) {
     this.order.setOrderId(id);
     console.log(id);
+    this.router.navigate(["/home/tabs/order/ongoingorder-detail"]);
   }
 }

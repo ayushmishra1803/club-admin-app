@@ -11,7 +11,7 @@ export class OrderdetailsService {
   setOrderId(id: string) {
     this.orderId = id;
     console.log(id);
-    this.router.navigate(["/home/tabs/order/ongoingorder-detail"]);
+    
   }
   getOrderId() {
     return this.orderId;
