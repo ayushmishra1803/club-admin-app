@@ -22,7 +22,7 @@
         <ion-col class="font" size="3"
           >Table Status<br /><br />{{ bt.status }} <br /><br />
           <br />
-          <div *ngIf="bt.status === 'No Order added'" class="btn" (click)="createorder()">
+          <div *ngIf="bt.status === 'No Order added'" class="btn" (click)="createorder(bt.uuid)">
             <br />
             Create new <br />
             order<br /><br />

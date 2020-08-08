@@ -2,6 +2,7 @@ import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { BookedTable } from "./interface/bookedinterface";
+import { OrderdetailsService } from '../service/order/orderdetails.service';
 
 @Component({
   selector: "app-booked-tables",
@@ -9,7 +10,7 @@ import { BookedTable } from "./interface/bookedinterface";
   styleUrls: ["./booked-tables.component.scss"],
 })
 export class BookedTablesComponent implements OnInit {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router,private service:OrderdetailsService) {}
   BookedTable: BookedTable[] = [];
   ngOnInit() {
     let token =
@@ -31,8 +32,9 @@ export class BookedTablesComponent implements OnInit {
         console.log(re);
       });
   }
-  createorder() {
+  createorder(id:string) {
     console.log("Hello");
+    this.service.setcreateorderId(id);
     this.router.navigate(["/home/tabs/order/create-order"]);
   }
 }

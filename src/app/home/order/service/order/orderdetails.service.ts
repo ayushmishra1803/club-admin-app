@@ -6,7 +6,7 @@ import { Injectable } from "@angular/core";
 })
 export class OrderdetailsService {
   orderId: string;
-
+  createOrderID: string;
   constructor(private router: Router) {}
   setOrderId(id: string) {
     this.orderId = id;
@@ -15,5 +15,17 @@ export class OrderdetailsService {
   }
   getOrderId() {
     return this.orderId;
+  }
+  setcreateorderId(id: string) {
+    this.createOrderID = id;
+    console.log(id);
+    
+  }
+  getcreateorderId(){
+    console.log(this.createOrderID);
+    
+   return this.createOrderID
+  
+   
   }
 }
