@@ -10,9 +10,11 @@ import { IonicModule } from "@ionic/angular";
 import { OrderPageRoutingModule } from "./order-routing.module";
 
 import { OrderPage } from "./order.page";
+import {NavController}from "@ionic/angular"
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule, OrderPageRoutingModule],
   declarations: [OrderPage,BookedTablesComponent,OnGoingComponent,CompletedComponent],
+  providers:[NavController]
 })
 export class OrderPageModule {}

@@ -16,26 +16,32 @@ export class CompletedComponent implements OnInit {
     private service: OrderdetailsService
   ) {}
   completedData: order[] = [];
+  getdata(){
+let token =
+  "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2OTg3Nzg0LCJqdGkiOiJhMzQ1MmU4N2QwNzU0ZjljOWRjODE2MTJlZWQ5ZjRjYSIsInV1aWQiOiIwYTc2MzI2ZC1jZWU4LTRjMzAtYmUyYy03NTgzZDE3ZTg5OGQifQ.qzYBwURN5Gee9GhhRffR2PHjvbCoXtVd7jV7DsoPd4Q";
+let header = new HttpHeaders({
+  Authorization: `Bearer ${token}`,
+});
+let data = {
+  date: "2020-08-10",
+  day: "Monday",
+};
+this.http
+  .post<{ message: string; data: order[] }>(
+    "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/order/past",
+    data,
+    { headers: header }
+  )
+  .subscribe((re) => {
+    this.completedData = re.data;
+    console.log(re);
+  });
+  }
   ngOnInit() {
-    let token =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2OTg3Nzg0LCJqdGkiOiJhMzQ1MmU4N2QwNzU0ZjljOWRjODE2MTJlZWQ5ZjRjYSIsInV1aWQiOiIwYTc2MzI2ZC1jZWU4LTRjMzAtYmUyYy03NTgzZDE3ZTg5OGQifQ.qzYBwURN5Gee9GhhRffR2PHjvbCoXtVd7jV7DsoPd4Q";
-    let header = new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-    let data = {
-      date: "2020-08-10",
-      day: "Monday",
-    };
-    this.http
-      .post<{ message: string; data: order[] }>(
-        "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/order/past",
-        data,
-        { headers: header }
-      )
-      .subscribe((re) => {
-        this.completedData = re.data;
-        console.log(re);
-      });
+    this.getdata();
+  }
+  ionViewDidEnter(){
+    this.getdata();
   }
   onclick(id: string) {
     this.service.setOrderId(id, true);

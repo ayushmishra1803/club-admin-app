@@ -4,6 +4,7 @@ import { AuthService } from "./../../../service/auth/auth.service";
 import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { NavController } from "@ionic/angular";
 
 @Component({
   selector: "app-on-going",
@@ -15,11 +16,12 @@ export class OnGoingComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private auth: AuthService,
-    private order: OrderdetailsService
+    private order: OrderdetailsService,
+    public navCtrl: NavController
   ) {}
   onGoingData: order[] = [];
 
-  ngOnInit() {
+  getdata() {
     let token =
       "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk2OTg3Nzg0LCJqdGkiOiJhMzQ1MmU4N2QwNzU0ZjljOWRjODE2MTJlZWQ5ZjRjYSIsInV1aWQiOiIwYTc2MzI2ZC1jZWU4LTRjMzAtYmUyYy03NTgzZDE3ZTg5OGQifQ.qzYBwURN5Gee9GhhRffR2PHjvbCoXtVd7jV7DsoPd4Q";
     let header = new HttpHeaders({
@@ -40,8 +42,15 @@ export class OnGoingComponent implements OnInit {
         console.log(re);
       });
   }
+  ngOnInit() {
+    this.getdata();
+  }
+
+  ionViewWillEnter() {
+    this.getdata();
+  }
   details(id: string) {
-    this.order.setOrderId(id,false);
+    this.order.setOrderId(id, false);
     console.log(id);
     this.router.navigate(["/home/tabs/order/ongoingorder-detail"]);
   }
