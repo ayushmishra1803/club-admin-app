@@ -1,10 +1,11 @@
+import { FeedbackComponent } from "./component/feedback/feedback.component";
 import { itemdetails } from "./../Interface/onGoingDetails";
 import { NgForm } from "@angular/forms";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { OrderdetailsService } from "./../../../service/order/orderdetails.service";
 import { Component, OnInit } from "@angular/core";
-import { ModalController } from '@ionic/angular';
+import { ModalController } from "@ionic/angular";
 
 @Component({
   selector: "app-update-order",

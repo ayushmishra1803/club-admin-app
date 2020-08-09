@@ -1,3 +1,4 @@
+import { FeedbackComponent } from './component/feedback/feedback.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +16,7 @@ import { UpdateOrderPage } from './update-order.page';
     IonicModule,
     UpdateOrderPageRoutingModule
   ],
-  declarations: [UpdateOrderPage]
+  declarations: [UpdateOrderPage],
+  entryComponents:[FeedbackComponent]
 })
 export class UpdateOrderPageModule {}
