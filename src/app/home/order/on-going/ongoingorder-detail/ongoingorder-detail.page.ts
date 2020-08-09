@@ -1,3 +1,4 @@
+import { NavController } from '@ionic/angular';
 import { OrderdetailsService } from "./../../service/order/orderdetails.service";
 import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
@@ -13,7 +14,8 @@ export class OngoingorderDetailPage implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private order: OrderdetailsService
+    private order: OrderdetailsService,
+    private nav:NavController
   ) {}
   orderId: string;
   completed: boolean;
@@ -60,7 +62,8 @@ export class OngoingorderDetailPage implements OnInit {
         { headers: header }
       )
       .subscribe((re) => {
-        this.router.navigate(["/home/tabs/order"]);
+         this.order.setTabMode("On-Going");
+        this.nav.navigateForward(["/home/tabs/order"]);
         console.log(re);
       });
   }
@@ -70,8 +73,15 @@ export class OngoingorderDetailPage implements OnInit {
   }
   back() {
     console.log("backwork");
+    if(this.completed===false){
+          this.order.setTabMode("On-Going");
+    }
+    else{
+      this.order.setTabMode("Completed");
+    }
 
-    this.router.navigate(["/home/tabs/order"]);
+
+ 
   }
   
 }

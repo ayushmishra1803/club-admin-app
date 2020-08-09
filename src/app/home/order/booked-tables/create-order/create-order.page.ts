@@ -1,3 +1,4 @@
+import { NavController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OrderdetailsService } from "./../../service/order/orderdetails.service";
@@ -15,7 +16,8 @@ export class CreateOrderPage implements OnInit {
   constructor(
     private http: HttpClient,
     private service: OrderdetailsService,
-    private router: Router
+    private router: Router,
+    private nav:NavController
   ) {}
   quantity: number;
   name: string;
@@ -53,7 +55,8 @@ export class CreateOrderPage implements OnInit {
       )
       .subscribe((re) => {
         console.log(re);
-        this.router.navigate(["//home/tabs/order"]);
+        this.nav.navigateForward(["/home/tabs/order"]);
+        this.service.setTabMode("Tables");
       });
   }
   delete(item) {

@@ -7,30 +7,33 @@ import { Injectable } from "@angular/core";
 export class OrderdetailsService {
   orderId: string;
   createOrderID: string;
-  completed:boolean;
+  completed: boolean;
+  tabMode: string = "Tables";
   constructor(private router: Router) {}
-  setOrderId(id: string,completed:boolean) {
-    this.completed=completed
+  setOrderId(id: string, completed: boolean) {
+    this.completed = completed;
     this.orderId = id;
     console.log(id);
-    
   }
   getOrderId() {
     return this.orderId;
   }
-  getiscompleted(){
-    return this.completed
+  getiscompleted() {
+    return this.completed;
   }
   setcreateorderId(id: string) {
     this.createOrderID = id;
     console.log(id);
-    
   }
-  getcreateorderId(){
+  getcreateorderId() {
     console.log(this.createOrderID);
-    
-   return this.createOrderID
-  
-   
+
+    return this.createOrderID;
+  }
+  setTabMode(Mode: string) {
+    this.tabMode = Mode;
+  }
+  getTabMode() {
+    return this.tabMode;
   }
 }
