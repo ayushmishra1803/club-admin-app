@@ -1,4 +1,4 @@
-import { FeedbackComponent } from "./component/feedback/feedback.component";
+
 import { itemdetails } from "./../Interface/onGoingDetails";
 import { NgForm } from "@angular/forms";
 import { HttpClient, HttpHeaders } from "@angular/common/http";

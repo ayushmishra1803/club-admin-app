@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,8 +14,10 @@ import { OngoingorderDetailPage } from './ongoingorder-detail.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    OngoingorderDetailPageRoutingModule
+    OngoingorderDetailPageRoutingModule,
+   
   ],
-  declarations: [OngoingorderDetailPage]
+  declarations: [OngoingorderDetailPage],
+ 
 })
 export class OngoingorderDetailPageModule {}
