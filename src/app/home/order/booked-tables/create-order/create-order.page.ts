@@ -56,7 +56,7 @@ export class CreateOrderPage implements OnInit {
       .subscribe((re) => {
         console.log(re);
         this.nav.navigateForward(["/home/tabs/order"]);
-        this.service.setTabMode("Tables");
+        this.service.setTabMode("On-Going");
       });
   }
   delete(item) {
