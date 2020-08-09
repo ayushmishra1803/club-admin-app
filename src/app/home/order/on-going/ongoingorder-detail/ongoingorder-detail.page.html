@@ -1,20 +1,18 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button (click)="back()" defaultHref="/home/tabs/order"></ion-back-button>
+      <ion-back-button
+        (click)="back()"
+        defaultHref="/home/tabs/order"
+      ></ion-back-button>
     </ion-buttons>
     <ion-title><h3>Order-Detail</h3></ion-title>
-    <ion-buttons slot="end" *ngIf="completed === false">
-      <ion-button (click)="add()">
-        <ion-icon name="add"> </ion-icon>
-      </ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div>
-    <ion-grid >
+    <ion-grid>
       <ion-row>
         <ion-col size="3"
           ><p style="color: rgb(255, 160, 0);">Date</p>
@@ -35,7 +33,7 @@
       </ion-row>
     </ion-grid>
     <div>
-      <table class="bordero">
+      <table>
         <tr>
           <td class="bordero">Quantity</td>
           <td class="bordero">Price</td>
@@ -44,19 +42,32 @@
         </tr>
 
         <tr *ngFor="let order of orderdetails">
-          <th class="border1">{{order.quantity}}</th>
+          <th style="border-left: 1px solid rgb(255, 160, 0);" class="border1">
+            {{order.quantity}}
+          </th>
           <th class="border1">{{order.price | currency}}</th>
           <th class="border1">{{order.item}}</th>
-          <th class="border1">{{order.quantity * order.price}}</th>
+          <th class="border1">{{order.quantity * order.price | currency}}</th>
+        </tr>
+
+        <tr>
+          <th class="border1" style="border-left: 1px solid rgb(255, 160, 0);">
+            &nbsp;
+          </th>
+          <th class="border1"></th>
+          <th class="border1"></th>
+          <th class="border1"></th>
         </tr>
         <tr>
-          <th class="border1">&nbsp;</th>
-          <th class="border1"></th>
-          <th class="border1"></th>
-          <th class="border1"></th>
-        </tr>
-        <tr>
-          <th class="border1"></th>
+          <th
+            class="border1"
+            style="
+              border-left: 1px solid rgb(255, 160, 0);
+              border-bottom: 1px solid rgb(255, 160, 0);
+            "
+          >
+            &nbsp;
+          </th>
           <th class="bordero" colspan="2">Total Amount</th>
           <th class="bordero">{{onGoingDetails.total_price | currency}}</th>
         </tr>
@@ -64,14 +75,27 @@
     </div>
   </div>
 
-  <div>
+  <div class="center">
     <ion-grid *ngIf="completed === false">
       <ion-row>
         <ion-col>
-           <ion-button color="danger" (click)="Remove()">Remove<ion-icon name="trash"></ion-icon></ion-button>
+          <ion-button color="danger" (click)="Remove()"
+            >Remove<ion-icon name="trash"></ion-icon
+          ></ion-button>
         </ion-col>
-        <ion-col >
-          <ion-button (click)="generateBill()">Generate Bill</ion-button>
+        <ion-col>
+          <ion-button color="success" (click)="add()"
+            >Add Item<ion-icon name="add"></ion-icon
+          ></ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col class="center">
+          <ion-fab-button
+            style="width: 80px; height: 80px;"
+            (click)="generateBill()"
+            >Ready to <br />pay ?</ion-fab-button
+          >
         </ion-col>
       </ion-row>
     </ion-grid>

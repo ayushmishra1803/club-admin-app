@@ -20,3 +20,15 @@ ion-col{
     font-size: 14px;
     text-align: center;
 }
+.center {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  table{
+    overflow-y:scroll;
+    height:300px;
+    display:block;
+ }
