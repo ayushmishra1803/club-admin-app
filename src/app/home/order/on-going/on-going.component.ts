@@ -31,8 +31,8 @@ export class OnGoingComponent implements OnInit {
       Authorization: `Bearer ${token}`,
     });
     let data = {
-      date: "2020-08-10",
-      day: "Monday",
+      date: "2020-08-11",
+      day: "Tuesday",
     };
     this.http
       .post<{ message: string; data: order[] }>(

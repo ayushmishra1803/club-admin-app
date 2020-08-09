@@ -22,9 +22,10 @@ export class BookedTablesComponent implements OnInit {
     let header = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    let data = {
-      date: "2020-08-10",
-    };
+   let data = {
+     date: "2020-08-11",
+    
+   };
     this.http
       .post<{ status: boolean; message: string; data: BookedTable[] }>(
         "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/order/bookedtables",
