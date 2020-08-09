@@ -68,4 +68,5 @@ export class OngoingorderDetailPage implements OnInit {
 
     this.router.navigate(["/home/tabs/order"]);
   }
+  
 }
