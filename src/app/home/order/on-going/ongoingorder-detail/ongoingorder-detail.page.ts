@@ -62,7 +62,7 @@ export class OngoingorderDetailPage implements OnInit {
         { headers: header }
       )
       .subscribe((re) => {
-        this.order.setTabMode("Tables");
+       this.order.setTabMode("Completed");
         this.nav.navigateForward(["/home/tabs/order"]);
         console.log(re);
       });
