@@ -1,3 +1,5 @@
+import { itemdetails } from './../../on-going/ongoingorder-detail/Interface/onGoingDetails';
+import { order } from './../../on-going/interface/onGoing';
 import { Router } from "@angular/router";
 import { Injectable } from "@angular/core";
 
@@ -9,6 +11,8 @@ export class OrderdetailsService {
   createOrderID: string;
   completed: boolean;
   tabMode: string = "Tables";
+  isAdd: boolean;
+  RemoverOrderDetails: itemdetails[];
   constructor(private router: Router) {}
   setOrderId(id: string, completed: boolean) {
     this.completed = completed;
@@ -35,5 +39,15 @@ export class OrderdetailsService {
   }
   getTabMode() {
     return this.tabMode;
+  }
+  seIsAdd(add: boolean, order?: itemdetails[]) {
+    this.isAdd = add;
+    this.RemoverOrderDetails=order
+  }
+  getIsAdd() {
+    return this.isAdd;
+  }
+  getRemoveDetails(){
+    return [...this.RemoverOrderDetails]
   }
 }

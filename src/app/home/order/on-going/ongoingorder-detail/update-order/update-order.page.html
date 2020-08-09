@@ -9,7 +9,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
+  <ion-card *ngIf="isAdd === true">
     <ion-card-content>
       <ion-grid>
         <div>
@@ -42,12 +42,55 @@
               <ion-row>
                 <ion-col>
                   <ion-button type="submit">Submit</ion-button>
-                  </ion-col>
-                </ion-row>
-              </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-item>
           </form>
         </div>
       </ion-grid>
     </ion-card-content>
   </ion-card>
+  <div *ngIf="isAdd === false">
+    <ion-card>
+      <ion-card-content>
+        <div>
+          <form (ngSubmit)="remove(f)" #f="ngForm">
+            <ion-grid>
+              <ion-item>
+                <ion-row>
+                  <ion-col>
+                    <ion-label>Select the Item you want to remove </ion-label>
+                    <ion-select name="remove" ngModel required>
+                      <ion-select-option *ngFor="let order of orderdetails">
+                        {{order.item}}
+                      </ion-select-option>
+                    </ion-select>
+                  </ion-col>
+                </ion-row>
+              </ion-item>
+              <ion-item>
+                <ion-row>
+                  <ion-col>
+                    <ion-label position="floating"
+                      >Enter the Quantity</ion-label
+                    >
+                    <ion-input type="number" name="quantity" ngModel required></ion-input>
+                  </ion-col>
+                </ion-row>
+              </ion-item>
+              <ion-item>
+                <ion-row>
+                  <ion-col>
+                    <ion-button color="danger" type="submit"
+                      >Remove<ion-icon name="trash"></ion-icon
+                    ></ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-item>
+            </ion-grid>
+          </form>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

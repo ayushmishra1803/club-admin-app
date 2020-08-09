@@ -68,6 +68,7 @@ export class OngoingorderDetailPage implements OnInit {
       });
   }
   add() {
+    this.order.seIsAdd(true);
     console.log("add");
     this.router.navigate(["home/tabs/order/ongoingorder-detail/update-order"]);
   }
@@ -80,6 +81,7 @@ export class OngoingorderDetailPage implements OnInit {
     }
   }
   Remove(){
+      this.order.seIsAdd(false, this.orderdetails);
     console.log("Remove");
     
  this.router.navigate(["home/tabs/order/ongoingorder-detail/update-order"]);
