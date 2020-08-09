@@ -1,0 +1,48 @@
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<div class="headi">
+    <p>Give Your Feedback</p>
+  </div>
+  <div class="rating">
+    <input
+      [(ngModel)]="rating"
+      value="5"
+      type="radio"
+      name="star1"
+      id="star1"
+    /><label for="star1"></label>
+    <input
+      [(ngModel)]="rating"
+      value="4"
+      type="radio"
+      name="star2"
+      id="star2"
+    /><label for="star2"></label>
+    <input
+      [(ngModel)]="rating"
+      value="3"
+      type="radio"
+      name="star3"
+      id="star3"
+    /><label for="star3"></label>
+    <input
+      [(ngModel)]="rating"
+      value="2"
+      type="radio"
+      name="star4"
+      id="star4"
+    /><label for="star4"></label>
+    <input
+      [(ngModel)]="rating"
+      value="1"
+      type="radio"
+      name="star5"
+      id="star5"
+    /><label for="star5"></label>
+  </div>
+  <br /><br />
+  <div class="posit">
+    <ion-button (click)="onsubmit()">Submit</ion-button>
+  </div>

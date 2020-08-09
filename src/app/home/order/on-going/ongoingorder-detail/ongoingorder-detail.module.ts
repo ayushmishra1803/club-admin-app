@@ -1,3 +1,4 @@
+import { OrderFeedbackComponent } from './order-feedback/order-feedback.component';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,9 +16,9 @@ import { OngoingorderDetailPage } from './ongoingorder-detail.page';
     FormsModule,
     IonicModule,
     OngoingorderDetailPageRoutingModule,
-   
+   FormsModule
   ],
-  declarations: [OngoingorderDetailPage],
- 
+  declarations: [OngoingorderDetailPage,OrderFeedbackComponent],
+ entryComponents:[OrderFeedbackComponent]
 })
 export class OngoingorderDetailPageModule {}

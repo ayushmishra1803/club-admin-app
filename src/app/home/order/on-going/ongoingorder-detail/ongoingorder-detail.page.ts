@@ -1,3 +1,4 @@
+import { OrderFeedbackComponent } from './order-feedback/order-feedback.component';
 
 import { NavController, ModalController } from "@ionic/angular";
 import { OrderdetailsService } from "./../../service/order/orderdetails.service";
@@ -67,22 +68,22 @@ export class OngoingorderDetailPage implements OnInit {
     //     this.nav.navigateForward(["/home/tabs/order"]);
     //     console.log(re);
     //   });
-    // this.model.create({ component: FeedbackComponent }).then((re) => {
-    //   re.present();
-    //  return re.onDidDismiss();
-    // }).then(re=>{
-    //   console.log(re.data,re.role);
-    //   if(re.role==="success")
-    //   {
-    //     console.log("hos gya kaam");
+    this.model.create({ component: OrderFeedbackComponent }).then((re) => {
+      re.present();
+     return re.onDidDismiss();
+    }).then(re=>{
+      console.log(re.data,re.role);
+      if(re.role==="success")
+      {
+        console.log("hos gya kaam");
         
-    //   }
-    //   else{
-    //     console.log("failed Try Again");
+       }
+       else{
+         console.log("failed Try Again");
         
-    //   }
+       }
       
-    // });
+     });
   }
   add() {
     this.order.seIsAdd(true);
