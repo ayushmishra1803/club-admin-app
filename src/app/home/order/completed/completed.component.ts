@@ -23,8 +23,8 @@ export class CompletedComponent implements OnInit {
   Authorization: `Bearer ${token}`,
 });
 let data = {
-  date: "2020-08-12",
-  day: "Wednesday",
+  date: "2020-08-13",
+  day: "Thursday",
 };
 this.http
   .post<{ message: string; data: order[] }>(
