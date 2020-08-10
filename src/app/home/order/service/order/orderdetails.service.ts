@@ -9,6 +9,7 @@ import { Injectable } from "@angular/core";
 export class OrderdetailsService {
   orderId: string;
   createOrderID: string;
+  GroupId:string;
   completed: boolean;
   tabMode: string = "Tables";
   isAdd: boolean;
@@ -49,5 +50,12 @@ export class OrderdetailsService {
   }
   getRemoveDetails(){
     return [...this.RemoverOrderDetails]
+  }
+  setGroupId(id:string)
+  {
+    this.GroupId=id
+  }
+  getGroupId(){
+    return this.GroupId
   }
 }

@@ -1,4 +1,4 @@
-import { OrderFeedbackComponent } from './order-feedback/order-feedback.component';
+import { OrderFeedbackComponent } from "./order-feedback/order-feedback.component";
 
 import { NavController, ModalController } from "@ionic/angular";
 import { OrderdetailsService } from "./../../service/order/orderdetails.service";
@@ -50,40 +50,41 @@ export class OngoingorderDetailPage implements OnInit {
   ionViewDidEnter() {
     this.getdata();
   }
-  generateBill() {
-    //     let token =
-    //       "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk3MDc2NTY0LCJqdGkiOiJkZGY0YjlmNjY4ZjU0N2M2Yjk4ZDIxMDc1NGM4Njk2ZCIsInV1aWQiOiIwYTc2MzI2ZC1jZWU4LTRjMzAtYmUyYy03NTgzZDE3ZTg5OGQifQ.HkR_V6xa7jptwSqvXmqVn70vv3IgQ2qHyDPyp5v18a8";
-    // let header = new HttpHeaders({
-    //   Authorization: `Bearer ${token}`,
-    // });
-    // const data = {};
-    // this.http
-    //   .post(
-    //     `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/order/complete/${this.orderId}`,
-    //     data,
-    //     { headers: header }
-    //   )
-    //   .subscribe((re) => {
-    //    this.order.setTabMode("Completed");
-    //     this.nav.navigateForward(["/home/tabs/order"]);
-    //     console.log(re);
-    //   });
-    this.model.create({ component: OrderFeedbackComponent }).then((re) => {
-      re.present();
-     return re.onDidDismiss();
-    }).then(re=>{
-      console.log(re.data,re.role);
-      if(re.role==="success")
-      {
-        console.log("hos gya kaam");
-        
-       }
-       else{
-         console.log("failed Try Again");
-        
-       }
-      
-     });
+  generateBill(f: string) {
+    console.log(f);
+    this.order.setGroupId(f);
+    let token =
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk3MDc2NTY0LCJqdGkiOiJkZGY0YjlmNjY4ZjU0N2M2Yjk4ZDIxMDc1NGM4Njk2ZCIsInV1aWQiOiIwYTc2MzI2ZC1jZWU4LTRjMzAtYmUyYy03NTgzZDE3ZTg5OGQifQ.HkR_V6xa7jptwSqvXmqVn70vv3IgQ2qHyDPyp5v18a8";
+    let header = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    const data = {};
+
+    this.model
+      .create({ component: OrderFeedbackComponent })
+      .then((re) => {
+        re.present();
+        return re.onDidDismiss();
+      })
+      .then((re) => {
+        console.log(re.data, re.role);
+        if (re.role === "success") {
+          console.log("hos gya kaam");
+          this.http
+            .post(
+              `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/order/complete/${this.orderId}`,
+              data,
+              { headers: header }
+            )
+            .subscribe((re) => {
+              this.order.setTabMode("Completed");
+              this.nav.navigateForward(["/home/tabs/order"]);
+              console.log(re);
+            });
+        } else {
+          console.log("failed Try Again");
+        }
+      });
   }
   add() {
     this.order.seIsAdd(true);

@@ -17,7 +17,7 @@ export class OrderFeedbackComponent implements OnInit {
   rating: string ;
   ngOnInit() {}
   onsubmit() {
-    let orderId=this.service.getOrderId().trim();
+    let orderId=this.service.getGroupId().trim();
    console.log(orderId);
    
     const data = {
