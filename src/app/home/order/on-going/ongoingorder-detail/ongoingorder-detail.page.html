@@ -33,7 +33,6 @@
       <table>
         <tr>
           <td class="bordero">Quantity</td>
-          <td class="bordero">Price</td>
           <td class="bordero">Items</td>
           <td class="bordero">Amount</td>
         </tr>
@@ -42,16 +41,14 @@
           <th style="border-left: 1px solid rgb(255, 160, 0);" class="border1">
             {{order.quantity}}
           </th>
-          <th class="border1">{{order.price | currency}}</th>
           <th class="border1">{{order.item}}</th>
-          <th class="border1">{{order.quantity * order.price | currency}}</th>
+          <th class="border1">{{order.price | currency}}</th>
         </tr>
 
         <tr>
           <th class="border1" style="border-left: 1px solid rgb(255, 160, 0);">
             &nbsp;
           </th>
-          <th class="border1"></th>
           <th class="border1"></th>
           <th class="border1"></th>
         </tr>
@@ -65,7 +62,7 @@
           >
             &nbsp;
           </th>
-          <th class="bordero" colspan="2">Total Amount</th>
+          <th class="bordero" >Total Amount</th>
           <th class="bordero">{{onGoingDetails.total_price | currency}}</th>
         </tr>
       </table>
