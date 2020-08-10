@@ -11,7 +11,7 @@
   <div>
     <ion-grid>
       <ion-row>
-       <ion-col size="3"
+        <ion-col size="3"
           ><p style="color: rgb(255, 160, 0);">Date</p>
           {{onGoingDetails.confirmed_table__date}}</ion-col
         >
@@ -30,7 +30,7 @@
       </ion-row>
     </ion-grid>
     <div>
-      <table>
+      <table style="padding: 10px;">
         <tr>
           <td class="bordero">Quantity</td>
           <td class="bordero">Items</td>
@@ -42,7 +42,12 @@
             {{order.quantity}}
           </th>
           <th class="border1">{{order.item}}</th>
-          <th class="border1">{{order.price | currency}}</th>
+          <th
+            style="text-align: right; padding-inline-end: 10px;"
+            class="border1"
+          >
+            {{order.price | currency}}
+          </th>
         </tr>
 
         <tr>
@@ -62,8 +67,13 @@
           >
             &nbsp;
           </th>
-          <th class="bordero" >Total Amount</th>
-          <th class="bordero">{{onGoingDetails.total_price | currency}}</th>
+          <th class="bordero">Total Amount</th>
+          <th
+            style="text-align: right; padding-inline-end: 10px;"
+            class="bordero"
+          >
+            {{onGoingDetails.total_price | currency}}
+          </th>
         </tr>
       </table>
     </div>
