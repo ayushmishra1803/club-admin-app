@@ -23,7 +23,7 @@ export class BookedTablesComponent implements OnInit {
       Authorization: `Bearer ${token}`,
     });
    let data = {
-     date: "2020-08-11",
+     date: "2020-08-12",
     
    };
     this.http

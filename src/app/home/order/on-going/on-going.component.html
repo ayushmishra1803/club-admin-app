@@ -1,33 +1,40 @@
-
-  <div class="center">
-    <div *ngFor="let on of onGoingData" >
-      <ion-list (click)="details(on.uuid)">
-        <ion-grid>
-          <ion-row class="border">
-            <ion-col size="3" class="border"
-              ><p style="text-align: center;">
-                Table No.
-              </p>
-              <p style="text-align: center;">
-                {{ on.confirmed_table__table_booked__table_num }}
-              </p>
-            </ion-col>
-            <ion-col size="3" style="font-size: 11px;">
-              Time : {{ on.created_at | date: "shortTime" }}
-            </ion-col>
-            <ion-col class="font" size="3">
-              <p style="text-align: center;">
-               <u> Order</u><br /><br>
-              {{ on.items[0] }}<br /> {{ on.items[1] }}<br>.<br>.
-              </p>
-            </ion-col>
-            <ion-col class="border" size="3">
-              <p style="font-size: 11px;text-align: center;">
-            Click here for <br> more details</p><br>
-            <img class="centerimg"  style="width:60px;padding-left: 20px;" src="assets\images\logo\guestlist.jpeg">
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-list>
-    </div>
+<div class="center">
+  <div *ngFor="let on of onGoingData">
+    <ion-list (click)="details(on.uuid)">
+      <ion-grid>
+        <ion-row class="border">
+          <ion-col size="3" class="border"
+            ><p style="text-align: center;">
+              Table No.
+            </p>
+            <p style="text-align: center;">
+              {{ on.confirmed_table__table_booked__table_num }}
+            </p>
+          </ion-col>
+          <ion-col size="3" style="font-size: 11px;">
+            Time : {{ on.created_at | date: "shortTime" }}
+          </ion-col>
+          <ion-col class="font" size="3">
+            <p style="text-align: center;">
+              <u> Order</u><br /><br />
+              {{ on.items[0] }}<br />
+              {{ on.items[1] }}<br />.<br />.
+            </p>
+          </ion-col>
+          <ion-col class="border" size="3">
+            <p style="font-size: 11px; text-align: center;">
+              Click here for <br />
+              more details
+            </p>
+            <br />
+            <img
+              class="centerimg"
+              style="width: 60px; padding-left: 20px;"
+              src="assets\images\logo\guestlist.jpeg"
+            />
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
   </div>
+</div>
