@@ -61,6 +61,19 @@ export class GroupDetailsPage implements OnInit {
       )
       .subscribe((re) => {
         console.log(re);
+        // const data1 = {
+        //   day: this.day.trim(),
+        //   date: this.date.trim(),
+        //   table_num: "child 10",
+        // };
+        // this.http.put(
+        //   `https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/tablelist/booktable/${id}`,
+        //   data,
+        //   { headers: header }
+        // ).subscribe(re=>{
+        //   console.log(re);
+          
+        // });
       });
   }
   no(id: string) {

@@ -30,10 +30,10 @@ export class OnGoingComponent implements OnInit {
      let header = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-   let data = {
-     date: "2020-08-13",
-     day: "Thursday",
-   };
+ let data = {
+   date: "2020-08-11",
+   day: "Tuesday",
+ };
     this.http
       .post<{ message: string; data: order[] }>(
         "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/order/ongoing",
