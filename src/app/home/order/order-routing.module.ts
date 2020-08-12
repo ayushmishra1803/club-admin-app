@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'create-order',
     loadChildren: () => import('./booked-tables/create-order/create-order.module').then( m => m.CreateOrderPageModule)
+  },
+  {
+    path: 'group-details',
+    loadChildren: () => import('./group-details/group-details.module').then( m => m.GroupDetailsPageModule)
   }
 ];
 

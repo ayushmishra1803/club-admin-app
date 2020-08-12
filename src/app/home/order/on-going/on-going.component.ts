@@ -18,16 +18,17 @@ export class OnGoingComponent implements OnInit {
     private router: Router,
     private auth: AuthService,
     private order: OrderdetailsService,
-    public navCtrl: NavController
+    private  navCtrl: NavController,
+   
+
   ) {}
   onGoingData: order[] = [];
   ongoing=new Subject();
     
   getdata() {
     
-     let token =
-       "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk3MDc2NTY0LCJqdGkiOiJkZGY0YjlmNjY4ZjU0N2M2Yjk4ZDIxMDc1NGM4Njk2ZCIsInV1aWQiOiIwYTc2MzI2ZC1jZWU4LTRjMzAtYmUyYy03NTgzZDE3ZTg5OGQifQ.HkR_V6xa7jptwSqvXmqVn70vv3IgQ2qHyDPyp5v18a8";
-     let header = new HttpHeaders({
+     let token =this.auth.getToken();
+      let header = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
  let data = {

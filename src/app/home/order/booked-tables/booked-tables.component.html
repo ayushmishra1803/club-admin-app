@@ -1,5 +1,5 @@
 <div *ngFor="let bt of BookedTable">
-  <ion-card class="card" *ngFor="let details of bt.group_detail">
+  <ion-card class="card" *ngFor="let details of bt.group_detail" (click)="Groupdetail(details)">
     <ion-grid>
       <ion-row
         ><ion-col size="3">

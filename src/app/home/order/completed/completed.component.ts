@@ -1,3 +1,4 @@
+import { AuthService } from './../../../service/auth/auth.service';
 import { OrderdetailsService } from "./../service/order/orderdetails.service";
 import { order } from "./../on-going/interface/onGoing";
 import { Router } from "@angular/router";
@@ -13,12 +14,12 @@ export class CompletedComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private service: OrderdetailsService
+    private service: OrderdetailsService,
+    private auth:AuthService
   ) {}
   completedData: order[] = [];
   getdata(){
-  let token =
-    "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk3MDc2NTY0LCJqdGkiOiJkZGY0YjlmNjY4ZjU0N2M2Yjk4ZDIxMDc1NGM4Njk2ZCIsInV1aWQiOiIwYTc2MzI2ZC1jZWU4LTRjMzAtYmUyYy03NTgzZDE3ZTg5OGQifQ.HkR_V6xa7jptwSqvXmqVn70vv3IgQ2qHyDPyp5v18a8";
+  let token =this.auth.getToken();
    let header = new HttpHeaders({
   Authorization: `Bearer ${token}`,
 });
