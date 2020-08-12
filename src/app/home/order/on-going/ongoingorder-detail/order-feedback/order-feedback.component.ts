@@ -1,3 +1,4 @@
+import { AuthService } from './../../../../../service/auth/auth.service';
 import { OrderdetailsService } from "./../../../service/order/orderdetails.service";
 import { HttpClient,HttpHeaders } from "@angular/common/http";
 import { ModalController } from "@ionic/angular";
@@ -12,7 +13,8 @@ export class OrderFeedbackComponent implements OnInit {
   constructor(
     private model: ModalController,
     private http: HttpClient,
-    private service: OrderdetailsService
+    private service: OrderdetailsService,
+    private auth:AuthService
   ) {}
   rating: string ;
   ngOnInit() {}
@@ -27,8 +29,7 @@ export class OrderFeedbackComponent implements OnInit {
    console.log(data);
     //  console.log("Hello");
     //  this.model.dismiss({ message: "Success" }, "success");
-    let token =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNTk3MDc2NTY0LCJqdGkiOiJkZGY0YjlmNjY4ZjU0N2M2Yjk4ZDIxMDc1NGM4Njk2ZCIsInV1aWQiOiIwYTc2MzI2ZC1jZWU4LTRjMzAtYmUyYy03NTgzZDE3ZTg5OGQifQ.HkR_V6xa7jptwSqvXmqVn70vv3IgQ2qHyDPyp5v18a8";
+    let token =this.auth.getToken()
     let header = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
