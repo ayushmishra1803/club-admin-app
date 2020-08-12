@@ -50,6 +50,7 @@ export class BookedTablesComponent implements OnInit {
     this.router.navigate(["/home/tabs/order/create-order"]);
   }
   Groupdetail(details: BookedTable) {
+    this.router.navigate(["/home/tabs/order/group-details"]);
     console.log(details);
     
   }
