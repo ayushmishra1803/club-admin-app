@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { AuthService } from './../../../service/auth/auth.service';
 import { OrderdetailsService } from "./../service/order/orderdetails.service";
 import { order } from "./../on-going/interface/onGoing";
@@ -15,7 +16,8 @@ export class CompletedComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private service: OrderdetailsService,
-    private auth:AuthService
+    private auth:AuthService,
+    private date :DatePipe
   ) {}
   completedData: order[] = [];
   getdata(){
@@ -23,10 +25,14 @@ export class CompletedComponent implements OnInit {
    let header = new HttpHeaders({
   Authorization: `Bearer ${token}`,
 });
-let data = {
-  date: "2020-08-11",
-  day: "Tuesday",
-};
+  const today=new Date()
+    console.log(today);
+    
+    let data = {
+      date: this.date.transform(today,"yyyy-MM-dd"),
+      day:this.date.transform(today,"EEE")
+    };
+
 this.http
   .post<{ message: string; data: order[] }>(
     "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/order/past",

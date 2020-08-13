@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Subject } from 'rxjs';
 import { OrderdetailsService } from "./../service/order/orderdetails.service";
 import { order } from "./interface/onGoing";
@@ -19,6 +20,7 @@ export class OnGoingComponent implements OnInit {
     private auth: AuthService,
     private order: OrderdetailsService,
     private  navCtrl: NavController,
+    private date:DatePipe
    
 
   ) {}
@@ -31,10 +33,13 @@ export class OnGoingComponent implements OnInit {
       let header = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
- let data = {
-   date: "2020-08-11",
-   day: "Tuesday",
- };
+ const today=new Date()
+    console.log(today);
+    
+    let data = {
+      date: this.date.transform(today,"yyyy-MM-dd"),
+      day:this.date.transform(today,"EEE")
+    };
     this.http
       .post<{ message: string; data: order[] }>(
         "https://4obg8v558d.execute-api.ap-south-1.amazonaws.com/dev/order/ongoing",

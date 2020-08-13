@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { AuthService } from './../../../service/auth/auth.service';
 import { Router } from "@angular/router";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
@@ -15,7 +16,8 @@ export class BookedTablesComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private service: OrderdetailsService,
-    private auth:AuthService
+    private auth:AuthService,
+    private date:DatePipe
   ) {}
   BookedTable: BookedTable[] = [];
   getdata() {
@@ -24,8 +26,11 @@ export class BookedTablesComponent implements OnInit {
     let header = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
+    const today=new Date()
+    console.log(today);
+    
     let data = {
-      date: "2020-08-11",
+      date: this.date.transform(today,"yyyy-MM-dd"),
     };
     this.http
       .post<{ status: boolean; message: string; data: BookedTable[] }>(
